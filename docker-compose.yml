@@ -1,0 +1,50 @@
+## Local development compose.
+## - Reads credentials from a sibling `.env` file (gitignored).
+## - For a production deploy from a registry image, use `stack.yml`.
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: ww3-postgres
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-ww3}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-ww3}
+      - POSTGRES_DB=${POSTGRES_DB:-ww3}
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./data/pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-ww3} -d ${POSTGRES_DB:-ww3}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  ww3:
+    build: .
+    image: ww3-indicator:latest
+    container_name: ww3-indicator
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - NODE_ENV=production
+      - WW3_DATA_DIR=/data
+      - WW3_REFRESH_INTERVAL_MS=900000
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-ww3}:${POSTGRES_PASSWORD:-ww3}@postgres:5432/${POSTGRES_DB:-ww3}
+      - DATABASE_SSL=disable
+      # Pulled from .env (or your shell) at compose time:
+      - ACLED_USERNAME=${ACLED_USERNAME:-}
+      - ACLED_PASSWORD=${ACLED_PASSWORD:-}
+      - CLOUDFLARE_API_TOKEN=${CLOUDFLARE_API_TOKEN:-}
+      - N2YO_API_KEY=${N2YO_API_KEY:-}
+      - ELECTRICITYMAP_TOKEN=${ELECTRICITYMAP_TOKEN:-}
+      - ELECTRICITYMAP_ZONE=${ELECTRICITYMAP_ZONE:-PT}
+      - OPENWEATHER_API_KEY=${OPENWEATHER_API_KEY:-}
+      # Headless scraping (Playwright) — install browsers first:
+      - HEADLESS_ENABLED=${HEADLESS_ENABLED:-0}
+    volumes:
+      - ./data:/data
+    restart: unless-stopped

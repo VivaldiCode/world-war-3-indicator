@@ -1,0 +1,60 @@
+## Production stack for a Docker host.
+##
+## - Image is pulled from a private registry. Set `WW3_REGISTRY` (e.g.
+##   `registry.example.com/library`) and optionally `WW3_IMAGE_TAG` in the
+##   stack env. Defaults to the Docker Hub style of `ww3-indicator:latest`.
+## - All credentials come from the orchestrator's environment-variable panel.
+##   Keep them out of the file — there's a `.env.example` showing the keys.
+## - Postgres data is persisted to a named volume (`ww3_pg_data`); the app's
+##   SQLite snapshot lives in `ww3_data`.
+##
+## Update flow:
+##   1. Build & push a fresh image (e.g. `WW3_REGISTRY=... bin/deploy.sh`).
+##   2. Re-deploy the stack so the new tag is pulled.
+##
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-ww3}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in the stack env}
+      POSTGRES_DB: ${POSTGRES_DB:-ww3}
+    volumes:
+      - ww3_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-ww3} -d ${POSTGRES_DB:-ww3}"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+
+  ww3:
+    image: ${WW3_REGISTRY:-}${WW3_REGISTRY:+/}ww3-indicator:${WW3_IMAGE_TAG:-latest}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "${WW3_PORT:-3000}:3000"
+    environment:
+      NODE_ENV: production
+      WW3_DATA_DIR: /data
+      WW3_REFRESH_INTERVAL_MS: ${WW3_REFRESH_INTERVAL_MS:-900000}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-ww3}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-ww3}
+      DATABASE_SSL: disable
+
+      ACLED_USERNAME: ${ACLED_USERNAME:-}
+      ACLED_PASSWORD: ${ACLED_PASSWORD:-}
+      CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN:-}
+      N2YO_API_KEY: ${N2YO_API_KEY:-}
+      ELECTRICITYMAP_TOKEN: ${ELECTRICITYMAP_TOKEN:-}
+      ELECTRICITYMAP_ZONE: ${ELECTRICITYMAP_ZONE:-PT}
+      OPENWEATHER_API_KEY: ${OPENWEATHER_API_KEY:-}
+
+      HEADLESS_ENABLED: "0"
+    volumes:
+      - ww3_data:/data
+    restart: unless-stopped
+
+volumes:
+  ww3_pg_data:
+  ww3_data:

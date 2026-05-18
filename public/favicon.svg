@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="10" fill="#1c1207"/>
+  <text x="32" y="42" text-anchor="middle" font-family="Cinzel, serif" font-weight="900" font-size="28" fill="#e8d9b0">W</text>
+  <text x="44" y="22" text-anchor="middle" font-family="Cinzel, serif" font-weight="900" font-size="14" fill="#a8331a">3</text>
+</svg>

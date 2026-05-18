@@ -1,0 +1,14 @@
+node_modules
+.next
+out
+tsconfig.tsbuildinfo
+data/
+.env
+.env.*
+!.env.example
+.DS_Store
+._*
+*.log
+.vercel
+.claude/
+
