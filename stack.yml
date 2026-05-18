@@ -29,7 +29,7 @@ services:
     restart: unless-stopped
 
   ww3:
-    image: ${WW3_REGISTRY:-}${WW3_REGISTRY:+/}ww3-indicator:${WW3_IMAGE_TAG:-latest}
+    image: ${WW3_REGISTRY:?set WW3_REGISTRY in the stack env, e.g. registry.example.com or registry.example.com:5000}/ww3-indicator:${WW3_IMAGE_TAG:-latest}
     depends_on:
       postgres:
         condition: service_healthy
