@@ -17,5 +17,14 @@ bin
 test
 tests
 *.log
+
+# macOS metadata that breaks Docker's tar streamer on non-APFS volumes
 .DS_Store
+._*
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+__MACOSX
+
 
