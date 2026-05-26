@@ -43,6 +43,7 @@ services:
       - ELECTRICITYMAP_TOKEN=${ELECTRICITYMAP_TOKEN:-}
       - ELECTRICITYMAP_ZONE=${ELECTRICITYMAP_ZONE:-PT}
       - OPENWEATHER_API_KEY=${OPENWEATHER_API_KEY:-}
+      - LIVEUAMAP_API_KEY=${LIVEUAMAP_API_KEY:-}
       # Headless scraping (Playwright) — install browsers first:
       - HEADLESS_ENABLED=${HEADLESS_ENABLED:-0}
     volumes:

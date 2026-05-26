@@ -34,6 +34,22 @@ const PATTERNS: Array<{
     }),
   },
   {
+    match: (s) => /LIVEUAMAP_API_KEY/i.test(s),
+    build: () => ({
+      message: 'Awaiting Liveuamap key',
+      hint: 'Premium key from me.liveuamap.com/devapi unlocks live geo-tagged conflict events.',
+      status: 'awaiting-credentials',
+    }),
+  },
+  {
+    match: (s) => /Liveuamap endpoint shape mismatch/i.test(s),
+    build: () => ({
+      message: 'Liveuamap endpoint pending setup',
+      hint: 'Copy the example request from me.liveuamap.com/devapi into LIVEUAMAP_ENDPOINT in the source file.',
+      status: 'parsing',
+    }),
+  },
+  {
     match: (s) => /CLOUDFLARE_API_TOKEN/i.test(s),
     build: () => ({
       message: 'Awaiting Cloudflare token',

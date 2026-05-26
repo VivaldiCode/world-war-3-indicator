@@ -18,6 +18,7 @@ import { electricityMapsSource } from './sources/electricitymap';
 import { openWeatherSource } from './sources/openweather';
 import { cloudflareRadarSource } from './sources/cloudflare_radar';
 import { ucdpBattleDeathsSource } from './sources/ucdp_battle_deaths';
+import { liveuamapSource } from './sources/liveuamap';
 
 /**
  * The single source of truth for which plugins are active and how heavy they
@@ -41,6 +42,7 @@ export const SOURCES: DataSource[] = [
   // Conflicts — boots-on-the-ground reality
   acledConflictsSource,    // weight 10 — political violence events
   ucdpConflictsSource,     // weight 9 — active state-based conflicts
+  liveuamapSource,         // weight 8 — live geo-tagged conflict events
   ucdpBattleDeathsSource,  // weight 4 — historical battle-deaths baseline
 
   // Sentiment — narrative pressure

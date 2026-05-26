@@ -329,6 +329,7 @@ file reads:
 | `ELECTRICITYMAP_TOKEN`    | yes\*    | enables grid signal |
 | `ELECTRICITYMAP_ZONE`     | no       | default `PT` |
 | `OPENWEATHER_API_KEY`     | yes\*    | enables conflict-weather |
+| `LIVEUAMAP_API_KEY`       | yes\*    | enables Liveuamap live conflict events (endpoint URL also needs to be set in [`src/lib/sources/liveuamap.ts`](src/lib/sources/liveuamap.ts) — copy from `me.liveuamap.com/devapi`) |
 
 \* Optional — each missing credential simply parks that source in the
 "awaiting credentials" state and its weight gets redistributed across the
