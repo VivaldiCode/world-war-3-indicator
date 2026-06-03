@@ -1,11 +1,15 @@
 import { ThreatGauge } from '@/components/ThreatGauge';
 import { RiskMap, type MapCountry } from '@/components/RiskMap';
+import { ForcesMap } from '@/components/ForcesMap';
 import { SourceCard } from '@/components/SourceCard';
 import { RefreshButton } from '@/components/RefreshButton';
 import { getOrRefresh } from '@/lib/refresh';
 import { SOURCES } from '@/lib/registry';
-import { COUNTRIES, centroidByName } from '@/lib/worldmap';
-import { MILITARY, countryColor } from '@/lib/military';
+import { COUNTRIES, centroidByName, PROJECTION } from '@/lib/worldmap';
+import { MILITARY } from '@/lib/military';
+import { SATELLITES } from '@/lib/satellites';
+import { DEPLOYMENTS } from '@/lib/deployments';
+import { alpha2ById } from '@/lib/flags';
 import type { SourceCategory } from '@/lib/types';
 
 export const dynamic = 'force-dynamic';
@@ -30,8 +34,9 @@ export default async function Home() {
     id: c.id,
     name: c.name,
     d: c.d,
+    bounds: c.bounds,
     centroid: centroidByName(c.name) ?? null,
-    color: countryColor(c.name),
+    flag: alpha2ById(c.id),
     mil: MILITARY.countries[c.name] ?? null,
   }));
 
@@ -68,8 +73,20 @@ export default async function Home() {
           </div>
         </div>
         <div className="lg:col-span-3">
-          <RiskMap composite={composite} mapData={mapData} updatedAt={MILITARY.updatedAt} />
+          <RiskMap composite={composite} mapData={mapData} />
         </div>
+      </section>
+
+      <section className="mb-10">
+        <ForcesMap
+          mapData={mapData}
+          updatedAt={MILITARY.updatedAt}
+          satellites={SATELLITES.satellites}
+          projection={PROJECTION}
+          satUpdatedAt={SATELLITES.updatedAt}
+          deployments={DEPLOYMENTS.deployments}
+          depUpdatedAt={DEPLOYMENTS.updatedAt}
+        />
       </section>
 
       <section className="mb-12">
@@ -110,6 +127,7 @@ export default async function Home() {
         </p>
         <div className="grid sm:grid-cols-2 gap-3 font-mono text-sm">
           <ApiRow method="GET" path="/api/index" desc="Current composite + every contributor." />
+          <ApiRow method="GET" path="/api/flights" desc="Live military aircraft (adsb.fi / airplanes.live)." />
           <ApiRow method="GET" path="/api/sources" desc="All registered sources w/ weights + latest readings." />
           <ApiRow method="GET" path="/api/sources/{id}" desc="Source details + 90-point history." />
           <ApiRow method="POST" path="/api/refresh?force=1" desc="Trigger a crawl across all sources." />

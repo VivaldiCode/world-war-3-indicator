@@ -9,6 +9,8 @@ export interface CountryShape {
   name: string;
   /** SVG `d` path attribute already projected into our 960×500 canvas. */
   d: string;
+  /** Projected bounding box [x0, y0, x1, y1] — used to place flag images. */
+  bounds: [number, number, number, number];
 }
 
 const W = 960;
@@ -38,16 +40,28 @@ const pathFn = geoPath(projection) as any;
 export const WORLD_VIEWBOX = `0 0 ${W} ${H}`;
 
 /**
+ * Scale + translate of the fitted projection. Passed to the client so the
+ * satellite overlay can rebuild the same `geoNaturalEarth1` (via d3-geo only,
+ * no topojson) and project orbits onto the exact same pixels as the countries.
+ */
+export const PROJECTION: { scale: number; translate: [number, number] } = {
+  scale: projection.scale(),
+  translate: projection.translate() as [number, number],
+};
+
+/**
  * Pre-projected country paths. Computed once at module load so each request
  * just returns a tiny string array.
  */
 export const COUNTRIES: CountryShape[] = collection.features
   .map((f) => {
     const d = pathFn(f) ?? '';
+    const b = pathFn.bounds(f) as [[number, number], [number, number]];
     return {
       id: String(f.id ?? ''),
       name: f.properties?.name ?? 'Unknown',
       d,
+      bounds: [b[0][0], b[0][1], b[1][0], b[1][1]] as [number, number, number, number],
     };
   })
   .filter((c) => c.d.length > 0);

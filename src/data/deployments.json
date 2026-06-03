@@ -1,0 +1,535 @@
+{
+  "updatedAt": "2026-06-03T14:01:57.117Z",
+  "source": "https://en.wikipedia.org/wiki/List_of_countries_with_overseas_military_bases",
+  "deployments": [
+    {
+      "from": "Australia",
+      "to": "Malaysia",
+      "note": "Butterworth Air Base"
+    },
+    {
+      "from": "Australia",
+      "to": "Papua New Guinea",
+      "note": "Lombrum Naval Base"
+    },
+    {
+      "from": "Australia",
+      "to": "Philippines",
+      "note": "TBD bases"
+    },
+    {
+      "from": "Australia",
+      "to": "United Arab Emirates",
+      "note": "Al Minhad Air Base"
+    },
+    {
+      "from": "Bangladesh",
+      "to": "Kuwait",
+      "note": "military contingent"
+    },
+    {
+      "from": "China",
+      "to": "Cambodia",
+      "note": "Ream Naval Base"
+    },
+    {
+      "from": "China",
+      "to": "Djibouti",
+      "note": "People's Liberation Army Support Base"
+    },
+    {
+      "from": "China",
+      "to": "Tajikistan",
+      "note": "Gorno-Badakhshan base"
+    },
+    {
+      "from": "France",
+      "to": "Djibouti",
+      "note": "French forces"
+    },
+    {
+      "from": "France",
+      "to": "Gabon",
+      "note": "EFG"
+    },
+    {
+      "from": "France",
+      "to": "Germany",
+      "note": "FFECSA"
+    },
+    {
+      "from": "France",
+      "to": "United Arab Emirates",
+      "note": "naval base"
+    },
+    {
+      "from": "Germany",
+      "to": "France",
+      "note": "Illkirch-Graffenstaden"
+    },
+    {
+      "from": "Germany",
+      "to": "Lithuania",
+      "note": "Rūdninkai Training Area"
+    },
+    {
+      "from": "Greece",
+      "to": "Cyprus",
+      "note": "Nicosia"
+    },
+    {
+      "from": "India",
+      "to": "Bhutan",
+      "note": "Haa and Thimphu"
+    },
+    {
+      "from": "India",
+      "to": "Madagascar",
+      "note": "northern Madagascar"
+    },
+    {
+      "from": "India",
+      "to": "Oman",
+      "note": "Ras al Hadd and Muscat"
+    },
+    {
+      "from": "Israel",
+      "to": "Azerbaijan",
+      "note": "Sitalchay Airbase"
+    },
+    {
+      "from": "Israel",
+      "to": "Syria",
+      "note": "Golan Heights bases"
+    },
+    {
+      "from": "Italy",
+      "to": "Djibouti",
+      "note": "National Military Support Base"
+    },
+    {
+      "from": "Italy",
+      "to": "Niger",
+      "note": "Bilateral Support Mission"
+    },
+    {
+      "from": "Japan",
+      "to": "Djibouti",
+      "note": "Ambouli base"
+    },
+    {
+      "from": "Pakistan",
+      "to": "Saudi Arabia",
+      "troops": 180,
+      "note": "Tabuk base"
+    },
+    {
+      "from": "Russia",
+      "to": "Armenia",
+      "note": "Gyumri base"
+    },
+    {
+      "from": "Russia",
+      "to": "Belarus",
+      "note": "Baranavichy radar"
+    },
+    {
+      "from": "Russia",
+      "to": "Brunei",
+      "note": "Jalan Aman Camp"
+    },
+    {
+      "from": "Russia",
+      "to": "Burkina Faso",
+      "note": "military presence"
+    },
+    {
+      "from": "Russia",
+      "to": "Central African Rep.",
+      "note": "CAR training base"
+    },
+    {
+      "from": "Russia",
+      "to": "Georgia",
+      "note": "South Ossetia base"
+    },
+    {
+      "from": "Russia",
+      "to": "Kazakhstan",
+      "note": "Baikonur range"
+    },
+    {
+      "from": "Russia",
+      "to": "Kyrgyzstan",
+      "note": "Kant Air Base"
+    },
+    {
+      "from": "Russia",
+      "to": "Mali",
+      "note": "military presence"
+    },
+    {
+      "from": "Russia",
+      "to": "Moldova",
+      "note": "Cobasna depot"
+    },
+    {
+      "from": "Russia",
+      "to": "Niger",
+      "note": "Nigerien bases"
+    },
+    {
+      "from": "Russia",
+      "to": "Syria",
+      "note": "Khmeimim base"
+    },
+    {
+      "from": "Russia",
+      "to": "Tajikistan",
+      "note": "Dushanbe base"
+    },
+    {
+      "from": "Russia",
+      "to": "Thailand",
+      "note": "Sai Yok Camp"
+    },
+    {
+      "from": "Turkey",
+      "to": "Albania",
+      "troops": 24,
+      "note": "Pasha Liman Base"
+    },
+    {
+      "from": "Turkey",
+      "to": "Bosnia and Herz.",
+      "troops": 242,
+      "note": "Mehmet The Conqueror Barracks"
+    },
+    {
+      "from": "Turkey",
+      "to": "Chad",
+      "note": "Abeche and Faya-Largeau base"
+    },
+    {
+      "from": "Turkey",
+      "to": "Cyprus",
+      "troops": 35000,
+      "note": "Turkish Peace Force Command"
+    },
+    {
+      "from": "Turkey",
+      "to": "Iraq",
+      "troops": 5000,
+      "note": "Bashiqa and Bamarni Air Base"
+    },
+    {
+      "from": "Turkey",
+      "to": "Kosovo",
+      "troops": 321,
+      "note": "Sultan Murat Kışlası"
+    },
+    {
+      "from": "Turkey",
+      "to": "Libya",
+      "note": "al-Watiya, Mitiga, Misrata and Zwara"
+    },
+    {
+      "from": "Turkey",
+      "to": "Qatar",
+      "troops": 5000,
+      "note": "Katar TSK Kara Unsur Komutanlığı"
+    },
+    {
+      "from": "Turkey",
+      "to": "Somalia",
+      "troops": 2000,
+      "note": "Camp TURKSOM"
+    },
+    {
+      "from": "Turkey",
+      "to": "Sudan",
+      "note": "Suakin, Khartoum"
+    },
+    {
+      "from": "Turkey",
+      "to": "Syria",
+      "troops": 10500,
+      "note": "Al-Bab, Al-Rai, Akhtarin, Afrin, Jindires, Rajo and Jarablus"
+    },
+    {
+      "from": "United Arab Emirates",
+      "to": "Libya",
+      "note": "Al-Khadim Airport"
+    },
+    {
+      "from": "United Kingdom",
+      "to": "Belize",
+      "note": "Price Barracks"
+    },
+    {
+      "from": "United Kingdom",
+      "to": "Brunei",
+      "note": "Seria"
+    },
+    {
+      "from": "United Kingdom",
+      "to": "Canada",
+      "note": "CFB Suffield"
+    },
+    {
+      "from": "United Kingdom",
+      "to": "Cyprus",
+      "note": "Troodos Station"
+    },
+    {
+      "from": "United Kingdom",
+      "to": "Germany",
+      "note": "Westfalen Garrison"
+    },
+    {
+      "from": "United Kingdom",
+      "to": "Kenya",
+      "note": "Nanyuki"
+    },
+    {
+      "from": "United Kingdom",
+      "to": "Nepal",
+      "note": "Pokhara Camp"
+    },
+    {
+      "from": "United Kingdom",
+      "to": "Norway",
+      "note": "Bardufoss Air Station"
+    },
+    {
+      "from": "United Kingdom",
+      "to": "Oman",
+      "note": "Duqm"
+    },
+    {
+      "from": "United Kingdom",
+      "to": "Qatar",
+      "note": "RAF Al Udeid"
+    },
+    {
+      "from": "United Kingdom",
+      "to": "United Arab Emirates",
+      "note": "Al Minhad Air Base"
+    },
+    {
+      "from": "United States of America",
+      "to": "Albania",
+      "note": "SOCEUR base"
+    },
+    {
+      "from": "United States of America",
+      "to": "Australia",
+      "note": "Pine Gap"
+    },
+    {
+      "from": "United States of America",
+      "to": "Bahamas",
+      "note": "AUTEC facility"
+    },
+    {
+      "from": "United States of America",
+      "to": "Belgium",
+      "note": "Chièvres Air Base"
+    },
+    {
+      "from": "United States of America",
+      "to": "Bosnia and Herz.",
+      "note": "NATO Headquarters"
+    },
+    {
+      "from": "United States of America",
+      "to": "Bulgaria",
+      "note": "Aitos Logistics Center"
+    },
+    {
+      "from": "United States of America",
+      "to": "Cameroon",
+      "troops": 200,
+      "note": "Cameroonian Air Force Base"
+    },
+    {
+      "from": "United States of America",
+      "to": "Canada",
+      "note": "CFB North Bay"
+    },
+    {
+      "from": "United States of America",
+      "to": "Cuba",
+      "troops": 8500,
+      "note": "Guantanamo Bay"
+    },
+    {
+      "from": "United States of America",
+      "to": "Djibouti",
+      "troops": 4000,
+      "note": "Camp Lemonnier"
+    },
+    {
+      "from": "United States of America",
+      "to": "El Salvador",
+      "note": "International Airport"
+    },
+    {
+      "from": "United States of America",
+      "to": "Estonia",
+      "note": "Ämari Air Base"
+    },
+    {
+      "from": "United States of America",
+      "to": "Germany",
+      "note": "Ramstein Air Base"
+    },
+    {
+      "from": "United States of America",
+      "to": "Greece",
+      "note": "Souda Bay Naval Base"
+    },
+    {
+      "from": "United States of America",
+      "to": "Greenland",
+      "troops": 150,
+      "note": "Pituffik Space Base"
+    },
+    {
+      "from": "United States of America",
+      "to": "Honduras",
+      "troops": 1200,
+      "note": "Soto Cano Air Base"
+    },
+    {
+      "from": "United States of America",
+      "to": "Iceland",
+      "note": "Naval Air Station Keflavík"
+    },
+    {
+      "from": "United States of America",
+      "to": "Iraq",
+      "troops": 2000,
+      "note": "Harir Air Base"
+    },
+    {
+      "from": "United States of America",
+      "to": "Israel",
+      "note": "Dimona Radar Facility"
+    },
+    {
+      "from": "United States of America",
+      "to": "Italy",
+      "note": "Naval Air Station Sigonella"
+    },
+    {
+      "from": "United States of America",
+      "to": "Japan",
+      "troops": 54000,
+      "note": "United States Forces Japan"
+    },
+    {
+      "from": "United States of America",
+      "to": "Jordan",
+      "troops": 3000,
+      "note": "Muwaffaq Salti Air Base"
+    },
+    {
+      "from": "United States of America",
+      "to": "Kenya",
+      "troops": 600,
+      "note": "Camp Simba"
+    },
+    {
+      "from": "United States of America",
+      "to": "Kosovo",
+      "note": "Camp Bondsteel"
+    },
+    {
+      "from": "United States of America",
+      "to": "Kuwait",
+      "troops": 13500,
+      "note": "Ali Al Salem Air Base"
+    },
+    {
+      "from": "United States of America",
+      "to": "Lithuania",
+      "note": "Camp Herkus"
+    },
+    {
+      "from": "United States of America",
+      "to": "Netherlands",
+      "note": "Volkel Air Base"
+    },
+    {
+      "from": "United States of America",
+      "to": "Norway",
+      "note": "Værnes Air Station"
+    },
+    {
+      "from": "United States of America",
+      "to": "Poland",
+      "note": "Camp Kościuszko"
+    },
+    {
+      "from": "United States of America",
+      "to": "Portugal",
+      "note": "Lajes Field"
+    },
+    {
+      "from": "United States of America",
+      "to": "Qatar",
+      "troops": 10000,
+      "note": "Al Udeid Air Base"
+    },
+    {
+      "from": "United States of America",
+      "to": "Romania",
+      "note": "Mihail Kogălniceanu Air Base"
+    },
+    {
+      "from": "United States of America",
+      "to": "Saudi Arabia",
+      "troops": 2700,
+      "note": "Prince Sultan Air Base"
+    },
+    {
+      "from": "United States of America",
+      "to": "Somalia",
+      "troops": 450,
+      "note": "Baledogle Airfield"
+    },
+    {
+      "from": "United States of America",
+      "to": "South Korea",
+      "troops": 28500,
+      "note": "United States Forces Korea"
+    },
+    {
+      "from": "United States of America",
+      "to": "Spain",
+      "note": "Naval Station Rota"
+    },
+    {
+      "from": "United States of America",
+      "to": "Thailand",
+      "note": "U-Tapao Royal Thai Navy Airfield"
+    },
+    {
+      "from": "United States of America",
+      "to": "Turkey",
+      "note": "Incirlik Air Base"
+    },
+    {
+      "from": "United States of America",
+      "to": "United Arab Emirates",
+      "troops": 5000,
+      "note": "Al Dhafra Air Base"
+    },
+    {
+      "from": "United States of America",
+      "to": "United Kingdom",
+      "note": "RAF Alconbury"
+    }
+  ]
+}

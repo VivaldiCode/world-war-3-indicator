@@ -9,7 +9,9 @@
     "lint": "next lint",
     "refresh": "tsx scripts/refresh.ts",
     "backfill": "tsx scripts/backfill.ts",
-    "military": "tsx scripts/military.ts"
+    "military": "tsx scripts/military.ts",
+    "satellites": "tsx scripts/satellites.ts",
+    "deployments": "tsx scripts/deployments.ts"
   },
   "dependencies": {
     "better-sqlite3": "^11.5.0",
