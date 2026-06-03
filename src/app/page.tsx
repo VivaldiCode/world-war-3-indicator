@@ -9,6 +9,7 @@ import { COUNTRIES, centroidByName, PROJECTION } from '@/lib/worldmap';
 import { MILITARY } from '@/lib/military';
 import { SATELLITES } from '@/lib/satellites';
 import { DEPLOYMENTS } from '@/lib/deployments';
+import { CONFLICTS } from '@/lib/conflicts';
 import { alpha2ById } from '@/lib/flags';
 import type { SourceCategory } from '@/lib/types';
 
@@ -86,6 +87,9 @@ export default async function Home() {
           satUpdatedAt={SATELLITES.updatedAt}
           deployments={DEPLOYMENTS.deployments}
           depUpdatedAt={DEPLOYMENTS.updatedAt}
+          conflicts={CONFLICTS.events}
+          conUpdatedAt={CONFLICTS.updatedAt}
+          conWindowHours={CONFLICTS.windowHours}
         />
       </section>
 

@@ -1,0 +1,2007 @@
+{
+  "updatedAt": "2026-06-03T15:46:43.661Z",
+  "source": "https://www.gdeltproject.org/ (Events 2.0, material conflict)",
+  "windowHours": 6,
+  "events": [
+    {
+      "lat": 35.75,
+      "lon": 51.515,
+      "root": "19",
+      "place": "Tehran, Tehran, Iran",
+      "country": "IR",
+      "mentions": 319,
+      "events": 66,
+      "tone": -5.5
+    },
+    {
+      "lat": 31.417,
+      "lon": 34.333,
+      "root": "19",
+      "place": "Gaza, Israel (general), Israel",
+      "country": "IS",
+      "mentions": 360,
+      "events": 94,
+      "tone": -6.8
+    },
+    {
+      "lat": 35.442,
+      "lon": 47.351,
+      "root": "19",
+      "place": "Qeshm, Kordestan, Iran",
+      "country": "IR",
+      "mentions": 273,
+      "events": 54,
+      "tone": -6.7
+    },
+    {
+      "lat": 28.667,
+      "lon": 77.217,
+      "root": "19",
+      "place": "Delhi, Delhi, India",
+      "country": "IN",
+      "mentions": 243,
+      "events": 81,
+      "tone": -4.8
+    },
+    {
+      "lat": 55.752,
+      "lon": 37.616,
+      "root": "19",
+      "place": "Kremlin, Moskva, Russia",
+      "country": "RS",
+      "mentions": 273,
+      "events": 75,
+      "tone": -5.2
+    },
+    {
+      "lat": 29.236,
+      "lon": 47.975,
+      "root": "19",
+      "place": "Kuwait International, Kuwait (general), Kuwait",
+      "country": "KU",
+      "mentions": 213,
+      "events": 40,
+      "tone": -7.7
+    },
+    {
+      "lat": 50.433,
+      "lon": 30.517,
+      "root": "19",
+      "place": "Kyiv, Kyyiv, Misto, Ukraine",
+      "country": "UP",
+      "mentions": 167,
+      "events": 57,
+      "tone": -4.9
+    },
+    {
+      "lat": 33.872,
+      "lon": 35.51,
+      "root": "19",
+      "place": "Beirut, Beyrouth, Lebanon",
+      "country": "LE",
+      "mentions": 147,
+      "events": 45,
+      "tone": -5.1
+    },
+    {
+      "lat": 28.6,
+      "lon": 77.2,
+      "root": "19",
+      "place": "New Delhi, Delhi, India",
+      "country": "IN",
+      "mentions": 142,
+      "events": 27,
+      "tone": -2.8
+    },
+    {
+      "lat": 59.894,
+      "lon": 30.264,
+      "root": "19",
+      "place": "Saint Petersburg, Sankt-Peterburg, Russia",
+      "country": "RS",
+      "mentions": 131,
+      "events": 42,
+      "tone": -5.6
+    },
+    {
+      "lat": 8,
+      "lon": 4,
+      "root": "18",
+      "place": "Oyo State, Oyo, Nigeria",
+      "country": "NI",
+      "mentions": 126,
+      "events": 27,
+      "tone": -5.7
+    },
+    {
+      "lat": 7.388,
+      "lon": 3.896,
+      "root": "18",
+      "place": "Ibadan, Oyo, Nigeria",
+      "country": "NI",
+      "mentions": 126,
+      "events": 30,
+      "tone": -4.9
+    },
+    {
+      "lat": 39.929,
+      "lon": 116.388,
+      "root": "17",
+      "place": "Beijing, Beijing, China",
+      "country": "CH",
+      "mentions": 171,
+      "events": 25,
+      "tone": -4.9
+    },
+    {
+      "lat": 51.083,
+      "lon": -1.167,
+      "root": "19",
+      "place": "Hampshire, Hampshire, United Kingdom",
+      "country": "UK",
+      "mentions": 116,
+      "events": 27,
+      "tone": -8.1
+    },
+    {
+      "lat": 50.333,
+      "lon": -4.767,
+      "root": "19",
+      "place": "Charlestown, Cornwall, United Kingdom",
+      "country": "UK",
+      "mentions": 87,
+      "events": 11,
+      "tone": -3.3
+    },
+    {
+      "lat": 9.083,
+      "lon": 7.533,
+      "root": "17",
+      "place": "Abuja, Abuja Federal Capital Territory, Nigeria",
+      "country": "NI",
+      "mentions": 121,
+      "events": 24,
+      "tone": -8
+    },
+    {
+      "lat": 33.324,
+      "lon": 35.532,
+      "root": "19",
+      "place": "Beaufort Castle, Nabatî, Lebanon",
+      "country": "LE",
+      "mentions": 84,
+      "events": 26,
+      "tone": -5
+    },
+    {
+      "lat": 32.067,
+      "lon": 34.767,
+      "root": "19",
+      "place": "Tel Aviv, Tel Aviv, Israel",
+      "country": "IS",
+      "mentions": 79,
+      "events": 25,
+      "tone": -6.7
+    },
+    {
+      "lat": 37.983,
+      "lon": 23.733,
+      "root": "19",
+      "place": "Athens, AttikíR, Greece",
+      "country": "GR",
+      "mentions": 75,
+      "events": 14,
+      "tone": -5.8
+    },
+    {
+      "lat": 54.583,
+      "lon": -5.933,
+      "root": "19",
+      "place": "Belfast, Belfast, United Kingdom",
+      "country": "UK",
+      "mentions": 82,
+      "events": 21,
+      "tone": -6.7
+    },
+    {
+      "lat": 7.167,
+      "lon": 5.083,
+      "root": "17",
+      "place": "Ondo State, Ondo, Nigeria",
+      "country": "NI",
+      "mentions": 104,
+      "events": 23,
+      "tone": -10.1
+    },
+    {
+      "lat": 53.5,
+      "lon": -2.217,
+      "root": "19",
+      "place": "Manchester, Manchester, United Kingdom",
+      "country": "UK",
+      "mentions": 77,
+      "events": 9,
+      "tone": -4.1
+    },
+    {
+      "lat": 24.641,
+      "lon": 46.773,
+      "root": "19",
+      "place": "Riyadh, Ar Riya?, Saudi Arabia",
+      "country": "SA",
+      "mentions": 63,
+      "events": 6,
+      "tone": -7.5
+    },
+    {
+      "lat": 31.767,
+      "lon": 35.233,
+      "root": "17",
+      "place": "Jerusalem, Israel (general), Israel",
+      "country": "IS",
+      "mentions": 102,
+      "events": 29,
+      "tone": -5.1
+    },
+    {
+      "lat": 13.083,
+      "lon": 80.283,
+      "root": "19",
+      "place": "Chennai, Tamil Nadu, India",
+      "country": "IN",
+      "mentions": 63,
+      "events": 12,
+      "tone": -7.7
+    },
+    {
+      "lat": 43.667,
+      "lon": -79.417,
+      "root": "19",
+      "place": "Toronto, Ontario, Canada",
+      "country": "CA",
+      "mentions": 65,
+      "events": 13,
+      "tone": -5.1
+    },
+    {
+      "lat": -34.183,
+      "lon": 22.146,
+      "root": "19",
+      "place": "Mossel Bay, Western Cape, South Africa",
+      "country": "SF",
+      "mentions": 63,
+      "events": 18,
+      "tone": -11.6
+    },
+    {
+      "lat": 46.498,
+      "lon": 32.309,
+      "root": "19",
+      "place": "Dnipro, Ukraine (general), Ukraine",
+      "country": "UP",
+      "mentions": 56,
+      "events": 16,
+      "tone": -6.3
+    },
+    {
+      "lat": 48.867,
+      "lon": 2.333,
+      "root": "19",
+      "place": "Paris, France (general), France",
+      "country": "FR",
+      "mentions": 64,
+      "events": 17,
+      "tone": -2.8
+    },
+    {
+      "lat": 54.467,
+      "lon": -6.333,
+      "root": "19",
+      "place": "Lurgan, Craigavon, United Kingdom",
+      "country": "UK",
+      "mentions": 56,
+      "events": 10,
+      "tone": -6.5
+    },
+    {
+      "lat": 35.685,
+      "lon": 139.751,
+      "root": "19",
+      "place": "Tokyo, Tokyo, Japan",
+      "country": "JA",
+      "mentions": 71,
+      "events": 13,
+      "tone": -7.1
+    },
+    {
+      "lat": 7.75,
+      "lon": 6.75,
+      "root": "17",
+      "place": "Kogi State, Kogi, Nigeria",
+      "country": "NI",
+      "mentions": 79,
+      "events": 18,
+      "tone": -9.7
+    },
+    {
+      "lat": -23.833,
+      "lon": 31.5,
+      "root": "17",
+      "place": "Kruger National Park, Limpopo, South Africa",
+      "country": "SF",
+      "mentions": 78,
+      "events": 30,
+      "tone": -6.4
+    },
+    {
+      "lat": 33.339,
+      "lon": 44.394,
+      "root": "19",
+      "place": "Baghdad, Baghdad, Iraq",
+      "country": "IZ",
+      "mentions": 45,
+      "events": 8,
+      "tone": -5.7
+    },
+    {
+      "lat": 51.782,
+      "lon": -1.314,
+      "root": "19",
+      "place": "Oxfordshire, Oxfordshire, United Kingdom",
+      "country": "UK",
+      "mentions": 57,
+      "events": 7,
+      "tone": -7.7
+    },
+    {
+      "lat": 27.6,
+      "lon": 53.133,
+      "root": "19",
+      "place": "Khaldeh, Fars, Iran",
+      "country": "IR",
+      "mentions": 43,
+      "events": 11,
+      "tone": -5.5
+    },
+    {
+      "lat": 23.132,
+      "lon": -82.364,
+      "root": "19",
+      "place": "Havana, Ciudad de La Habana, Cuba",
+      "country": "CU",
+      "mentions": 55,
+      "events": 13,
+      "tone": -2.4
+    },
+    {
+      "lat": 29.261,
+      "lon": 50.331,
+      "root": "19",
+      "place": "Kharg, Bushehr, Iran",
+      "country": "IR",
+      "mentions": 42,
+      "events": 8,
+      "tone": -8.1
+    },
+    {
+      "lat": -33.883,
+      "lon": 151.217,
+      "root": "19",
+      "place": "Bondi Beach, New South Wales, Australia",
+      "country": "AS",
+      "mentions": 52,
+      "events": 12,
+      "tone": -9.8
+    },
+    {
+      "lat": 50.7,
+      "lon": -4.067,
+      "root": "19",
+      "place": "Okehampton, Devon, United Kingdom",
+      "country": "UK",
+      "mentions": 36,
+      "events": 3,
+      "tone": -4.3
+    },
+    {
+      "lat": 52.5,
+      "lon": -2,
+      "root": "19",
+      "place": "Smethwick, Sandwell, United Kingdom",
+      "country": "UK",
+      "mentions": 44,
+      "events": 10,
+      "tone": -6.8
+    },
+    {
+      "lat": 23.723,
+      "lon": 90.409,
+      "root": "19",
+      "place": "Dhaka, Dhaka, Bangladesh",
+      "country": "BG",
+      "mentions": 42,
+      "events": 6,
+      "tone": -5
+    },
+    {
+      "lat": 33.407,
+      "lon": 35.483,
+      "root": "19",
+      "place": "Arabsalim, Nabatî, Lebanon",
+      "country": "LE",
+      "mentions": 34,
+      "events": 10,
+      "tone": -6.8
+    },
+    {
+      "lat": -22.453,
+      "lon": 31.333,
+      "root": "17",
+      "place": "Pafuri, Gaza, Mozambique",
+      "country": "MZ",
+      "mentions": 46,
+      "events": 13,
+      "tone": -5.6
+    },
+    {
+      "lat": -37.817,
+      "lon": 144.967,
+      "root": "17",
+      "place": "Melbourne, Victoria, Australia",
+      "country": "AS",
+      "mentions": 76,
+      "events": 11,
+      "tone": -5.4
+    },
+    {
+      "lat": 54.25,
+      "lon": -6.967,
+      "root": "19",
+      "place": "Monaghan, Monaghan, Ireland",
+      "country": "EI",
+      "mentions": 32,
+      "events": 8,
+      "tone": -1.2
+    },
+    {
+      "lat": 22.57,
+      "lon": 88.37,
+      "root": "19",
+      "place": "Kolkata, West Bengal, India",
+      "country": "IN",
+      "mentions": 42,
+      "events": 10,
+      "tone": -3.4
+    },
+    {
+      "lat": -17.818,
+      "lon": 31.045,
+      "root": "17",
+      "place": "Harare, Mashonaland East, Zimbabwe",
+      "country": "ZI",
+      "mentions": 45,
+      "events": 6,
+      "tone": -10.3
+    },
+    {
+      "lat": 0.741,
+      "lon": 30.042,
+      "root": "19",
+      "place": "Bundibugyo, Bundibugyo, Uganda",
+      "country": "UG",
+      "mentions": 30,
+      "events": 4,
+      "tone": -6.5
+    },
+    {
+      "lat": -6.174,
+      "lon": 106.829,
+      "root": "17",
+      "place": "Jakarta, Jakarta Raya, Indonesia",
+      "country": "ID",
+      "mentions": 46,
+      "events": 10,
+      "tone": -5.7
+    },
+    {
+      "lat": 6.44,
+      "lon": 7.494,
+      "root": "19",
+      "place": "Enugu, Enugu, Nigeria",
+      "country": "NI",
+      "mentions": 29,
+      "events": 6,
+      "tone": -0.3
+    },
+    {
+      "lat": 41.9,
+      "lon": 12.483,
+      "root": "19",
+      "place": "Rome, Lazio, Italy",
+      "country": "IT",
+      "mentions": 31,
+      "events": 7,
+      "tone": -6.9
+    },
+    {
+      "lat": 10.523,
+      "lon": 7.44,
+      "root": "19",
+      "place": "Kaduna, Kaduna, Nigeria",
+      "country": "NI",
+      "mentions": 40,
+      "events": 4,
+      "tone": -1.3
+    },
+    {
+      "lat": 25.252,
+      "lon": 55.28,
+      "root": "17",
+      "place": "Dubai, Dubayy, United Arab Emirates",
+      "country": "AE",
+      "mentions": 51,
+      "events": 11,
+      "tone": -4.7
+    },
+    {
+      "lat": 2.19,
+      "lon": 42.876,
+      "root": "19",
+      "place": "Shabelle, Bay, Somalia",
+      "country": "SO",
+      "mentions": 28,
+      "events": 3,
+      "tone": -4.8
+    },
+    {
+      "lat": 8.133,
+      "lon": 4.267,
+      "root": "18",
+      "place": "Ogbomoso, Oyo, Nigeria",
+      "country": "NI",
+      "mentions": 31,
+      "events": 7,
+      "tone": -3.5
+    },
+    {
+      "lat": 12.983,
+      "lon": 77.583,
+      "root": "18",
+      "place": "Bengaluru, Karnataka, India",
+      "country": "IN",
+      "mentions": 41,
+      "events": 3,
+      "tone": -4.1
+    },
+    {
+      "lat": 23.267,
+      "lon": 77.4,
+      "root": "18",
+      "place": "Bhopal, Madhya Pradesh, India",
+      "country": "IN",
+      "mentions": 30,
+      "events": 4,
+      "tone": -11.2
+    },
+    {
+      "lat": 6.932,
+      "lon": 79.848,
+      "root": "19",
+      "place": "Colombo Fort, Western, Sri Lanka",
+      "country": "CE",
+      "mentions": 36,
+      "events": 8,
+      "tone": -7.7
+    },
+    {
+      "lat": 10,
+      "lon": 6,
+      "root": "19",
+      "place": "Niger State, Niger, Nigeria",
+      "country": "NI",
+      "mentions": 27,
+      "events": 4,
+      "tone": -8.5
+    },
+    {
+      "lat": 54.5,
+      "lon": -6.5,
+      "root": "19",
+      "place": "Craigavon, Craigavon, United Kingdom",
+      "country": "UK",
+      "mentions": 35,
+      "events": 9,
+      "tone": -7.3
+    },
+    {
+      "lat": 33.167,
+      "lon": 35.367,
+      "root": "19",
+      "place": "Maaroub, Liban-Sud, Lebanon",
+      "country": "LE",
+      "mentions": 26,
+      "events": 5,
+      "tone": -7.9
+    },
+    {
+      "lat": -22.9,
+      "lon": -43.233,
+      "root": "19",
+      "place": "Rio De Janeiro, Estado do Rio, Brazil",
+      "country": "BR",
+      "mentions": 34,
+      "events": 16,
+      "tone": -5.5
+    },
+    {
+      "lat": 2.067,
+      "lon": 45.367,
+      "root": "19",
+      "place": "Mogadishu, Banaadir, Somalia",
+      "country": "SO",
+      "mentions": 36,
+      "events": 8,
+      "tone": -4
+    },
+    {
+      "lat": 11,
+      "lon": 78,
+      "root": "19",
+      "place": "Tamil Nadu, Tamil Nadu, India",
+      "country": "IN",
+      "mentions": 33,
+      "events": 7,
+      "tone": -3.6
+    },
+    {
+      "lat": 40.499,
+      "lon": 19.457,
+      "root": "19",
+      "place": "Narta, Vlore, Albania",
+      "country": "AL",
+      "mentions": 26,
+      "events": 6,
+      "tone": -4.7
+    },
+    {
+      "lat": 59.917,
+      "lon": 10.75,
+      "root": "17",
+      "place": "Oslo, Oslo, Norway",
+      "country": "NO",
+      "mentions": 36,
+      "events": 5,
+      "tone": -3.5
+    },
+    {
+      "lat": 63.722,
+      "lon": 37.053,
+      "root": "19",
+      "place": "Kusha, Arkhangel'skaya Oblast', Russia",
+      "country": "RS",
+      "mentions": 24,
+      "events": 4,
+      "tone": -0.7
+    },
+    {
+      "lat": 33.5,
+      "lon": 48.5,
+      "root": "19",
+      "place": "Lorestan, Lorestan, Iran",
+      "country": "IR",
+      "mentions": 30,
+      "events": 4,
+      "tone": -6.2
+    },
+    {
+      "lat": 6.5,
+      "lon": 6,
+      "root": "19",
+      "place": "Edo State, Edo, Nigeria",
+      "country": "NI",
+      "mentions": 24,
+      "events": 5,
+      "tone": -9.8
+    },
+    {
+      "lat": 29.35,
+      "lon": 47.521,
+      "root": "16",
+      "place": "Ali Al Salem Air Base, Kuwait (general), Kuwait",
+      "country": "KU",
+      "mentions": 41,
+      "events": 7,
+      "tone": -6.8
+    },
+    {
+      "lat": 33.097,
+      "lon": 35.334,
+      "root": "19",
+      "place": "Galilee, Ha?afon, Israel",
+      "country": "LE",
+      "mentions": 30,
+      "events": 4,
+      "tone": -5.6
+    },
+    {
+      "lat": 38.717,
+      "lon": -9.133,
+      "root": "19",
+      "place": "Lisbon, Lisboa, Portugal",
+      "country": "PO",
+      "mentions": 30,
+      "events": 5,
+      "tone": -4.6
+    },
+    {
+      "lat": 18.533,
+      "lon": 73.867,
+      "root": "17",
+      "place": "Pune, Maharashtra, India",
+      "country": "IN",
+      "mentions": 34,
+      "events": 8,
+      "tone": -8.4
+    },
+    {
+      "lat": -34.587,
+      "lon": -58.672,
+      "root": "17",
+      "place": "Buenos Aires, Distrito Federal, Argentina",
+      "country": "AR",
+      "mentions": 36,
+      "events": 12,
+      "tone": -2.7
+    },
+    {
+      "lat": 7.667,
+      "lon": 5.25,
+      "root": "18",
+      "place": "Ekiti State, Ekiti, Nigeria",
+      "country": "NI",
+      "mentions": 25,
+      "events": 4,
+      "tone": -7.6
+    },
+    {
+      "lat": 49.278,
+      "lon": 38.911,
+      "root": "19",
+      "place": "Starobelsk, Luhans'ka Oblast', Ukraine",
+      "country": "UP",
+      "mentions": 22,
+      "events": 6,
+      "tone": -4
+    },
+    {
+      "lat": 22.2,
+      "lon": 111.117,
+      "root": "17",
+      "place": "Shenzhen, Guangdong, China",
+      "country": "CH",
+      "mentions": 31,
+      "events": 6,
+      "tone": 1.1
+    },
+    {
+      "lat": 55.95,
+      "lon": -3.2,
+      "root": "17",
+      "place": "Edinburgh, Edinburgh, City of, United Kingdom",
+      "country": "UK",
+      "mentions": 32,
+      "events": 5,
+      "tone": -6.1
+    },
+    {
+      "lat": 31.198,
+      "lon": 29.919,
+      "root": "17",
+      "place": "Alexandria, Al Iskandariyah, Egypt",
+      "country": "EG",
+      "mentions": 40,
+      "events": 6,
+      "tone": -0.7
+    },
+    {
+      "lat": 12.55,
+      "lon": 6.633,
+      "root": "18",
+      "place": "Kogi, Nigeria (general), Nigeria",
+      "country": "NI",
+      "mentions": 23,
+      "events": 6,
+      "tone": -7.9
+    },
+    {
+      "lat": 51.833,
+      "lon": 0.583,
+      "root": "17",
+      "place": "Essex, Essex, United Kingdom",
+      "country": "UK",
+      "mentions": 38,
+      "events": 6,
+      "tone": -11
+    },
+    {
+      "lat": -25.707,
+      "lon": 28.229,
+      "root": "16",
+      "place": "Pretoria, Gauteng, South Africa",
+      "country": "SF",
+      "mentions": 34,
+      "events": 7,
+      "tone": -5.6
+    },
+    {
+      "lat": 54.287,
+      "lon": 36.245,
+      "root": "19",
+      "place": "Volna, Kaluzhskaya Oblast', Russia",
+      "country": "RS",
+      "mentions": 20,
+      "events": 4,
+      "tone": -6.7
+    },
+    {
+      "lat": 43.167,
+      "lon": -2.167,
+      "root": "19",
+      "place": "Gipuzkoa, Pais Vasco, Spain",
+      "country": "SP",
+      "mentions": 20,
+      "events": 1,
+      "tone": -9.4
+    },
+    {
+      "lat": 25.223,
+      "lon": 116.057,
+      "root": "19",
+      "place": "Xiaomi, Fujian, China",
+      "country": "CH",
+      "mentions": 20,
+      "events": 2,
+      "tone": -6
+    },
+    {
+      "lat": 13.5,
+      "lon": 23.5,
+      "root": "19",
+      "place": "Darfur, Gharb Darfur, Sudan",
+      "country": "SU",
+      "mentions": 20,
+      "events": 2,
+      "tone": -2.1
+    },
+    {
+      "lat": 50.922,
+      "lon": 34.8,
+      "root": "19",
+      "place": "Sumy, Sums'ka Oblast', Ukraine",
+      "country": "UP",
+      "mentions": 20,
+      "events": 8,
+      "tone": -6.8
+    },
+    {
+      "lat": 30.9,
+      "lon": 75.85,
+      "root": "19",
+      "place": "Ludhiana, Punjab, India",
+      "country": "IN",
+      "mentions": 26,
+      "events": 4,
+      "tone": -2.4
+    },
+    {
+      "lat": 30.047,
+      "lon": 31.238,
+      "root": "19",
+      "place": "Cairo, Al Qahirah, Egypt",
+      "country": "EG",
+      "mentions": 21,
+      "events": 4,
+      "tone": -6.9
+    },
+    {
+      "lat": 51.401,
+      "lon": -2.459,
+      "root": "19",
+      "place": "Bristol, Bristol, City of, United Kingdom",
+      "country": "UK",
+      "mentions": 22,
+      "events": 5,
+      "tone": -6.1
+    },
+    {
+      "lat": 49.05,
+      "lon": -122.3,
+      "root": "19",
+      "place": "Abbotsford, British Columbia, Canada",
+      "country": "CA",
+      "mentions": 25,
+      "events": 6,
+      "tone": -8
+    },
+    {
+      "lat": 31.55,
+      "lon": 74.344,
+      "root": "17",
+      "place": "Lahore, Punjab, Pakistan",
+      "country": "PK",
+      "mentions": 34,
+      "events": 6,
+      "tone": -10
+    },
+    {
+      "lat": 7.958,
+      "lon": 5.26,
+      "root": "18",
+      "place": "Eda Oniyo, Ekiti, Nigeria",
+      "country": "NI",
+      "mentions": 20,
+      "events": 4,
+      "tone": -5.7
+    },
+    {
+      "lat": 59.995,
+      "lon": 29.767,
+      "root": "19",
+      "place": "Kronstadt, Sankt-Peterburg, Russia",
+      "country": "RS",
+      "mentions": 19,
+      "events": 7,
+      "tone": -2.7
+    },
+    {
+      "lat": 53.333,
+      "lon": -6.249,
+      "root": "19",
+      "place": "Dublin, Dublin, Ireland",
+      "country": "EI",
+      "mentions": 21,
+      "events": 4,
+      "tone": -3.5
+    },
+    {
+      "lat": -26.525,
+      "lon": 28.374,
+      "root": "17",
+      "place": "Rensburg, Gauteng, South Africa",
+      "country": "SF",
+      "mentions": 30,
+      "events": 3,
+      "tone": -3.3
+    },
+    {
+      "lat": 22,
+      "lon": 105,
+      "root": "19",
+      "place": "North Vietnam, Vietnam (general), Vietnam, Republic Of",
+      "country": "VM",
+      "mentions": 18,
+      "events": 2,
+      "tone": -7.2
+    },
+    {
+      "lat": 31.763,
+      "lon": 35.557,
+      "root": "18",
+      "place": "Jordan River, Israel (general), Israel",
+      "country": "IS",
+      "mentions": 20,
+      "events": 3,
+      "tone": -2.6
+    },
+    {
+      "lat": 3.167,
+      "lon": 101.7,
+      "root": "17",
+      "place": "Kuala Lumpur, Kuala Lumpur, Malaysia",
+      "country": "MY",
+      "mentions": 24,
+      "events": 3,
+      "tone": -12.7
+    },
+    {
+      "lat": 35.017,
+      "lon": 126.867,
+      "root": "19",
+      "place": "Chungnam, South Korea (general), South Korea",
+      "country": "KS",
+      "mentions": 17,
+      "events": 2,
+      "tone": -0.9
+    },
+    {
+      "lat": 52.333,
+      "lon": -0.183,
+      "root": "17",
+      "place": "Huntingdon, Cambridgeshire, United Kingdom",
+      "country": "UK",
+      "mentions": 23,
+      "events": 5,
+      "tone": -4.1
+    },
+    {
+      "lat": 53.667,
+      "lon": -3,
+      "root": "18",
+      "place": "Southport, Sefton, United Kingdom",
+      "country": "UK",
+      "mentions": 19,
+      "events": 6,
+      "tone": -7.1
+    },
+    {
+      "lat": 37.566,
+      "lon": 127,
+      "root": "17",
+      "place": "Seoul, Soul-t'ukpyolsi, South Korea",
+      "country": "KS",
+      "mentions": 32,
+      "events": 9,
+      "tone": -0.1
+    },
+    {
+      "lat": 54.583,
+      "lon": -3.683,
+      "root": "19",
+      "place": "English Channel, United Kingdom (general), United Kingdom",
+      "country": "UK",
+      "mentions": 16,
+      "events": 3,
+      "tone": -3
+    },
+    {
+      "lat": -1.717,
+      "lon": 105.933,
+      "root": "19",
+      "place": "Riau, Indonesia (general), Indonesia",
+      "country": "ID",
+      "mentions": 20,
+      "events": 6,
+      "tone": -1.3
+    },
+    {
+      "lat": 32.085,
+      "lon": 35.258,
+      "root": "18",
+      "place": "As Sawiya, West Bank (general), West Bank",
+      "country": "WE",
+      "mentions": 17,
+      "events": 8,
+      "tone": -6.3
+    },
+    {
+      "lat": 45.417,
+      "lon": -75.7,
+      "root": "17",
+      "place": "Ottawa, Ontario, Canada",
+      "country": "CA",
+      "mentions": 30,
+      "events": 4,
+      "tone": -4.6
+    },
+    {
+      "lat": 17.375,
+      "lon": 78.474,
+      "root": "17",
+      "place": "Hyderabad, Andhra Pradesh, India",
+      "country": "IN",
+      "mentions": 25,
+      "events": 4,
+      "tone": -11.5
+    },
+    {
+      "lat": 45,
+      "lon": 34,
+      "root": "19",
+      "place": "Simferopol, Krym, Avtonomna Respublika, Ukraine",
+      "country": "UP",
+      "mentions": 15,
+      "events": 5,
+      "tone": -5.1
+    },
+    {
+      "lat": 54.006,
+      "lon": 103.872,
+      "root": "19",
+      "place": "Zapad, Irkutskaya Oblast', Russia",
+      "country": "RS",
+      "mentions": 15,
+      "events": 2,
+      "tone": -5.6
+    },
+    {
+      "lat": -33.592,
+      "lon": 22.206,
+      "root": "17",
+      "place": "Oudtshoorn, Western Cape, South Africa",
+      "country": "SF",
+      "mentions": 24,
+      "events": 6,
+      "tone": -11.6
+    },
+    {
+      "lat": 11.5,
+      "lon": 13,
+      "root": "18",
+      "place": "Borno State, Borno, Nigeria",
+      "country": "NI",
+      "mentions": 22,
+      "events": 5,
+      "tone": -4.5
+    },
+    {
+      "lat": 22.974,
+      "lon": 91.236,
+      "root": "17",
+      "place": "Mohammadpur, Chittagong, Bangladesh",
+      "country": "BG",
+      "mentions": 24,
+      "events": 4,
+      "tone": -9.8
+    },
+    {
+      "lat": 40.181,
+      "lon": 44.514,
+      "root": "19",
+      "place": "Yerevan, Yerevan*, Armenia",
+      "country": "AM",
+      "mentions": 22,
+      "events": 6,
+      "tone": -1.9
+    },
+    {
+      "lat": 45.712,
+      "lon": 34.393,
+      "root": "19",
+      "place": "Dzhankoi, Krym, Avtonomna Respublika, Ukraine",
+      "country": "UP",
+      "mentions": 15,
+      "events": 3,
+      "tone": -4.5
+    },
+    {
+      "lat": 18.975,
+      "lon": 72.826,
+      "root": "17",
+      "place": "Mumbai, Maharashtra, India",
+      "country": "IN",
+      "mentions": 34,
+      "events": 8,
+      "tone": -5.1
+    },
+    {
+      "lat": 51.833,
+      "lon": -2.167,
+      "root": "19",
+      "place": "Gloucestershire, Gloucestershire, United Kingdom",
+      "country": "UK",
+      "mentions": 19,
+      "events": 5,
+      "tone": -5.4
+    },
+    {
+      "lat": 52.517,
+      "lon": 13.4,
+      "root": "19",
+      "place": "Berlin, Berlin, Germany",
+      "country": "GM",
+      "mentions": 16,
+      "events": 4,
+      "tone": -5.3
+    },
+    {
+      "lat": 25.767,
+      "lon": 78.25,
+      "root": "17",
+      "place": "Parbati, India (general), India",
+      "country": "IN",
+      "mentions": 20,
+      "events": 2,
+      "tone": -8.4
+    },
+    {
+      "lat": 32.22,
+      "lon": 35.264,
+      "root": "19",
+      "place": "Nablus, West Bank (general), West Bank",
+      "country": "WE",
+      "mentions": 15,
+      "events": 6,
+      "tone": -4.2
+    },
+    {
+      "lat": 18.492,
+      "lon": -93.75,
+      "root": "17",
+      "place": "Sinaloa, Tabasco, Mexico",
+      "country": "MX",
+      "mentions": 28,
+      "events": 7,
+      "tone": -5.2
+    },
+    {
+      "lat": 20.025,
+      "lon": -75.822,
+      "root": "19",
+      "place": "Santiago De Cuba, Santiago de Cuba, Cuba",
+      "country": "CU",
+      "mentions": 17,
+      "events": 3,
+      "tone": 0.7
+    },
+    {
+      "lat": 49.883,
+      "lon": -97.167,
+      "root": "19",
+      "place": "Winnipeg, Manitoba, Canada",
+      "country": "CA",
+      "mentions": 17,
+      "events": 5,
+      "tone": 0.3
+    },
+    {
+      "lat": -19.65,
+      "lon": 17.333,
+      "root": "19",
+      "place": "Otavi, Otjozondjupa, Namibia",
+      "country": "WA",
+      "mentions": 14,
+      "events": 2,
+      "tone": -7.5
+    },
+    {
+      "lat": 0,
+      "lon": 102,
+      "root": "19",
+      "place": "Sumatra, Indonesia (general), Indonesia",
+      "country": "ID",
+      "mentions": 14,
+      "events": 5,
+      "tone": -1.3
+    },
+    {
+      "lat": 28.55,
+      "lon": -16.117,
+      "root": "19",
+      "place": "La Mancha, Canarias, Spain",
+      "country": "SP",
+      "mentions": 14,
+      "events": 2,
+      "tone": -2.2
+    },
+    {
+      "lat": 11,
+      "lon": 107,
+      "root": "19",
+      "place": "South Vietnam, Vietnam (general), Vietnam, Republic Of",
+      "country": "VM",
+      "mentions": 14,
+      "events": 2,
+      "tone": -7.3
+    },
+    {
+      "lat": 29.863,
+      "lon": 56.885,
+      "root": "19",
+      "place": "Hezbollah, Kerman, Iran",
+      "country": "IR",
+      "mentions": 14,
+      "events": 5,
+      "tone": -6.3
+    },
+    {
+      "lat": 51.737,
+      "lon": 36.187,
+      "root": "19",
+      "place": "Kursk, Kurskaya Oblast', Russia",
+      "country": "RS",
+      "mentions": 14,
+      "events": 2,
+      "tone": -3.6
+    },
+    {
+      "lat": 49.25,
+      "lon": -123.133,
+      "root": "17",
+      "place": "Vancouver, British Columbia, Canada",
+      "country": "CA",
+      "mentions": 22,
+      "events": 5,
+      "tone": -6.7
+    },
+    {
+      "lat": 43.25,
+      "lon": 76.95,
+      "root": "17",
+      "place": "Almaty, Almaty Qalasy, Kazakhstan",
+      "country": "KZ",
+      "mentions": 27,
+      "events": 10,
+      "tone": -7.2
+    },
+    {
+      "lat": 46.656,
+      "lon": 32.618,
+      "root": "18",
+      "place": "Kherson, Khersons'ka Oblast', Ukraine",
+      "country": "UP",
+      "mentions": 15,
+      "events": 9,
+      "tone": -7.3
+    },
+    {
+      "lat": 58.967,
+      "lon": 5.75,
+      "root": "19",
+      "place": "Stavanger, Rogaland, Norway",
+      "country": "NO",
+      "mentions": 14,
+      "events": 6,
+      "tone": -4
+    },
+    {
+      "lat": 12.433,
+      "lon": 30.7,
+      "root": "18",
+      "place": "Nuba, Shamal Kurdufan, Sudan",
+      "country": "SU",
+      "mentions": 20,
+      "events": 4,
+      "tone": -7.8
+    },
+    {
+      "lat": 29.77,
+      "lon": 48.256,
+      "root": "19",
+      "place": "Bubiyan Island, Al Jahra', Kuwait",
+      "country": "KU",
+      "mentions": 13,
+      "events": 4,
+      "tone": -9.1
+    },
+    {
+      "lat": 51.4,
+      "lon": -1.317,
+      "root": "19",
+      "place": "Newbury, West Berkshire, United Kingdom",
+      "country": "UK",
+      "mentions": 13,
+      "events": 2,
+      "tone": 3.2
+    },
+    {
+      "lat": 18.8,
+      "lon": -98.95,
+      "root": "19",
+      "place": "Cuautla, Morelos, Mexico",
+      "country": "MX",
+      "mentions": 13,
+      "events": 2,
+      "tone": -10
+    },
+    {
+      "lat": 25.048,
+      "lon": 121.532,
+      "root": "17",
+      "place": "Taipei, T'ai-pei, Taiwan",
+      "country": "TW",
+      "mentions": 29,
+      "events": 4,
+      "tone": -4.8
+    },
+    {
+      "lat": 7.417,
+      "lon": 7.3,
+      "root": "19",
+      "place": "Aneke, Nigeria (general), Nigeria",
+      "country": "NI",
+      "mentions": 12,
+      "events": 2,
+      "tone": 2.5
+    },
+    {
+      "lat": 56.5,
+      "lon": 27.317,
+      "root": "19",
+      "place": "Rezekne, Rezeknes Novads, Latvia",
+      "country": "LG",
+      "mentions": 12,
+      "events": 3,
+      "tone": -8.8
+    },
+    {
+      "lat": 39.025,
+      "lon": 47.07,
+      "root": "19",
+      "place": "As Iran, Az¯arbayjan-e Sharqi, Iran",
+      "country": "IR",
+      "mentions": 12,
+      "events": 3,
+      "tone": -6.7
+    },
+    {
+      "lat": 49.267,
+      "lon": -54.5,
+      "root": "18",
+      "place": "Gander Bay, Newfoundland, Canada",
+      "country": "CA",
+      "mentions": 14,
+      "events": 4,
+      "tone": -10.5
+    },
+    {
+      "lat": 46.433,
+      "lon": 141.883,
+      "root": "19",
+      "place": "Tohoku, Sakhalinskaya Oblast', Russia",
+      "country": "RS",
+      "mentions": 14,
+      "events": 4,
+      "tone": -3.8
+    },
+    {
+      "lat": 51.95,
+      "lon": 1.067,
+      "root": "19",
+      "place": "Manningtree, Essex, United Kingdom",
+      "country": "UK",
+      "mentions": 12,
+      "events": 2,
+      "tone": -9.3
+    },
+    {
+      "lat": -30.711,
+      "lon": 26.592,
+      "root": "17",
+      "place": "Masango, Eastern Cape, South Africa",
+      "country": "SF",
+      "mentions": 18,
+      "events": 4,
+      "tone": -10.9
+    },
+    {
+      "lat": 51.283,
+      "lon": -0.633,
+      "root": "19",
+      "place": "Pirbright, Surrey, United Kingdom",
+      "country": "UK",
+      "mentions": 13,
+      "events": 4,
+      "tone": -2.5
+    },
+    {
+      "lat": 0.717,
+      "lon": 31.967,
+      "root": "19",
+      "place": "Mwanga, Kiboga, Uganda",
+      "country": "UG",
+      "mentions": 13,
+      "events": 2,
+      "tone": -3.5
+    },
+    {
+      "lat": 55.667,
+      "lon": 12.583,
+      "root": "15",
+      "place": "Copenhagen, Køavn*, Denmark",
+      "country": "DA",
+      "mentions": 24,
+      "events": 6,
+      "tone": 2.7
+    },
+    {
+      "lat": 54.35,
+      "lon": -6.667,
+      "root": "17",
+      "place": "Armagh, Armagh, United Kingdom",
+      "country": "UK",
+      "mentions": 17,
+      "events": 4,
+      "tone": -5.9
+    },
+    {
+      "lat": 54.7,
+      "lon": -3.483,
+      "root": "19",
+      "place": "Ellenborough, Cumbria, United Kingdom",
+      "country": "UK",
+      "mentions": 14,
+      "events": 4,
+      "tone": -4.5
+    },
+    {
+      "lat": 11.55,
+      "lon": 104.917,
+      "root": "17",
+      "place": "Phnom Penh, (CB11), Cambodia",
+      "country": "CB",
+      "mentions": 17,
+      "events": 5,
+      "tone": -7
+    },
+    {
+      "lat": 24.867,
+      "lon": 67.05,
+      "root": "16",
+      "place": "Karachi, Sindh, Pakistan",
+      "country": "PK",
+      "mentions": 21,
+      "events": 8,
+      "tone": -7.6
+    },
+    {
+      "lat": 47.5,
+      "lon": -72,
+      "root": "17",
+      "place": "Quebec, Quebec, Canada",
+      "country": "CA",
+      "mentions": 27,
+      "events": 5,
+      "tone": -0.7
+    },
+    {
+      "lat": 39,
+      "lon": 35,
+      "root": "18",
+      "place": "Anadolu, Turkey (general), Turkey",
+      "country": "TU",
+      "mentions": 16,
+      "events": 3,
+      "tone": -1.5
+    },
+    {
+      "lat": 32.033,
+      "lon": 75.517,
+      "root": "19",
+      "place": "Gurdaspur, Punjab, India",
+      "country": "IN",
+      "mentions": 14,
+      "events": 3,
+      "tone": 0.4
+    },
+    {
+      "lat": 3.529,
+      "lon": 99.018,
+      "root": "19",
+      "place": "Antara, Aceh, Indonesia",
+      "country": "ID",
+      "mentions": 12,
+      "events": 3,
+      "tone": -1.7
+    },
+    {
+      "lat": 27.1,
+      "lon": 93.617,
+      "root": "19",
+      "place": "Itanagar, Goa, India",
+      "country": "IN",
+      "mentions": 12,
+      "events": 4,
+      "tone": -3.8
+    },
+    {
+      "lat": -36.75,
+      "lon": 174.583,
+      "root": "19",
+      "place": "Auckland, Auckland, New Zealand",
+      "country": "NZ",
+      "mentions": 12,
+      "events": 4,
+      "tone": 0.4
+    },
+    {
+      "lat": 33.496,
+      "lon": 51.927,
+      "root": "18",
+      "place": "Natanz, Esfahan, Iran",
+      "country": "IR",
+      "mentions": 12,
+      "events": 3,
+      "tone": -3.9
+    },
+    {
+      "lat": 37.957,
+      "lon": -1.092,
+      "root": "18",
+      "place": "Callosa De Segura, Valenciana, Spain",
+      "country": "SP",
+      "mentions": 12,
+      "events": 2,
+      "tone": -5.9
+    },
+    {
+      "lat": 12,
+      "lon": 11.5,
+      "root": "19",
+      "place": "Yobe, Yobe, Nigeria",
+      "country": "NI",
+      "mentions": 12,
+      "events": 2,
+      "tone": -5.6
+    },
+    {
+      "lat": 25.183,
+      "lon": 85.517,
+      "root": "19",
+      "place": "Bihar, Bihar, India",
+      "country": "IN",
+      "mentions": 12,
+      "events": 2,
+      "tone": -4.6
+    },
+    {
+      "lat": 39.927,
+      "lon": 32.864,
+      "root": "19",
+      "place": "Ankara, Ankara, Turkey",
+      "country": "TU",
+      "mentions": 15,
+      "events": 6,
+      "tone": -4.1
+    },
+    {
+      "lat": 8.483,
+      "lon": 8.033,
+      "root": "17",
+      "place": "Rafin Gabas, Nigeria (general), Nigeria",
+      "country": "NI",
+      "mentions": 25,
+      "events": 4,
+      "tone": -6.6
+    },
+    {
+      "lat": -25.965,
+      "lon": 32.589,
+      "root": "17",
+      "place": "Maputo, Maputo, Mozambique",
+      "country": "MZ",
+      "mentions": 22,
+      "events": 5,
+      "tone": -7.2
+    },
+    {
+      "lat": -10.733,
+      "lon": -37.817,
+      "root": "19",
+      "place": "Annapolis, Sergipe, Brazil",
+      "country": "BR",
+      "mentions": 11,
+      "events": 4,
+      "tone": 3.2
+    },
+    {
+      "lat": 13.5,
+      "lon": 76,
+      "root": "16",
+      "place": "Karnataka, Karnataka, India",
+      "country": "IN",
+      "mentions": 30,
+      "events": 7,
+      "tone": 2.3
+    },
+    {
+      "lat": -31.933,
+      "lon": 115.833,
+      "root": "19",
+      "place": "Perth, Western Australia, Australia",
+      "country": "AS",
+      "mentions": 11,
+      "events": 2,
+      "tone": -5.5
+    },
+    {
+      "lat": 6.453,
+      "lon": 3.396,
+      "root": "17",
+      "place": "Lagos, Lagos, Nigeria",
+      "country": "NI",
+      "mentions": 26,
+      "events": 3,
+      "tone": -6
+    },
+    {
+      "lat": 16.805,
+      "lon": 96.156,
+      "root": "19",
+      "place": "Rangoon, Yangon, Myanmar",
+      "country": "BM",
+      "mentions": 10,
+      "events": 6,
+      "tone": -4.5
+    },
+    {
+      "lat": -30.386,
+      "lon": 28.464,
+      "root": "19",
+      "place": "Lekhalong, Eastern Cape, South Africa",
+      "country": "SF",
+      "mentions": 10,
+      "events": 1,
+      "tone": 1.5
+    },
+    {
+      "lat": 46.583,
+      "lon": -80.183,
+      "root": "19",
+      "place": "River Valley, Ontario, Canada",
+      "country": "CA",
+      "mentions": 10,
+      "events": 1,
+      "tone": -4.1
+    },
+    {
+      "lat": -16.168,
+      "lon": 34.898,
+      "root": "19",
+      "place": "Mbewe, Chikwawa, Malawi",
+      "country": "MI",
+      "mentions": 10,
+      "events": 1,
+      "tone": -5.9
+    },
+    {
+      "lat": 48.5,
+      "lon": 38.5,
+      "root": "19",
+      "place": "Donbas, Ukraine (general), Ukraine",
+      "country": "UP",
+      "mentions": 10,
+      "events": 1,
+      "tone": -5.4
+    },
+    {
+      "lat": 50.917,
+      "lon": -0.083,
+      "root": "19",
+      "place": "Sussex, East Sussex, United Kingdom",
+      "country": "UK",
+      "mentions": 10,
+      "events": 2,
+      "tone": -2.8
+    },
+    {
+      "lat": 53.383,
+      "lon": -2.933,
+      "root": "19",
+      "place": "Sefton Park, Liverpool, United Kingdom",
+      "country": "UK",
+      "mentions": 10,
+      "events": 2,
+      "tone": 2.8
+    },
+    {
+      "lat": 30.669,
+      "lon": 50.206,
+      "root": "19",
+      "place": "Kurdistan, Khuzestan, Iran",
+      "country": "IR",
+      "mentions": 10,
+      "events": 2,
+      "tone": -2.4
+    },
+    {
+      "lat": 13.5,
+      "lon": 39.5,
+      "root": "19",
+      "place": "Tigray, Tigray, Ethiopia",
+      "country": "ET",
+      "mentions": 10,
+      "events": 1,
+      "tone": -0.9
+    },
+    {
+      "lat": 11.167,
+      "lon": 39.167,
+      "root": "19",
+      "place": "Amhara, Amara, Ethiopia",
+      "country": "ET",
+      "mentions": 10,
+      "events": 1,
+      "tone": -0.9
+    },
+    {
+      "lat": 17.967,
+      "lon": 102.6,
+      "root": "19",
+      "place": "Vientiane, (LA11), Laos",
+      "country": "LA",
+      "mentions": 10,
+      "events": 1,
+      "tone": -2.3
+    },
+    {
+      "lat": 5.617,
+      "lon": -0.233,
+      "root": "19",
+      "place": "Achimota, Ghana (general), Ghana",
+      "country": "GH",
+      "mentions": 10,
+      "events": 2,
+      "tone": 1.6
+    },
+    {
+      "lat": 4.846,
+      "lon": 31.601,
+      "root": "19",
+      "place": "Juba, Wilayat Bahr al Jabal, South Sudan",
+      "country": "OD",
+      "mentions": 10,
+      "events": 1,
+      "tone": 0.9
+    },
+    {
+      "lat": 36.043,
+      "lon": 41.716,
+      "root": "19",
+      "place": "Baaj, NinawáZ, Iraq",
+      "country": "IZ",
+      "mentions": 10,
+      "events": 1,
+      "tone": -7.1
+    },
+    {
+      "lat": 55.957,
+      "lon": 53.026,
+      "root": "19",
+      "place": "Madyar, Tatarstan, Russia",
+      "country": "RS",
+      "mentions": 10,
+      "events": 1,
+      "tone": -4
+    },
+    {
+      "lat": 41.317,
+      "lon": 69.25,
+      "root": "19",
+      "place": "Tashkent, Toshkent Shahri, Uzbekistan",
+      "country": "UZ",
+      "mentions": 10,
+      "events": 1,
+      "tone": 2.3
+    },
+    {
+      "lat": 48.15,
+      "lon": 11.583,
+      "root": "19",
+      "place": "Munich, Bayern, Germany",
+      "country": "GM",
+      "mentions": 10,
+      "events": 1,
+      "tone": 2.2
+    },
+    {
+      "lat": 33.8,
+      "lon": 36.4,
+      "root": "19",
+      "place": "Maamoura, Rif Dimashq, Syria",
+      "country": "SY",
+      "mentions": 10,
+      "events": 1,
+      "tone": -8.8
+    },
+    {
+      "lat": 33.126,
+      "lon": 35.825,
+      "root": "19",
+      "place": "Quneitra, Al Qunaytirah, Syria",
+      "country": "SY",
+      "mentions": 10,
+      "events": 2,
+      "tone": -6.6
+    },
+    {
+      "lat": 18.456,
+      "lon": -96.704,
+      "root": "19",
+      "place": "Chilapa, Veracruz-Llave, Mexico",
+      "country": "MX",
+      "mentions": 10,
+      "events": 2,
+      "tone": -5.1
+    },
+    {
+      "lat": -26.267,
+      "lon": 27.867,
+      "root": "19",
+      "place": "Soweto, Gauteng, South Africa",
+      "country": "SF",
+      "mentions": 10,
+      "events": 3,
+      "tone": -12
+    },
+    {
+      "lat": -20.333,
+      "lon": -47.783,
+      "root": "19",
+      "place": "Ituverava, SãPaulo, Brazil",
+      "country": "BR",
+      "mentions": 10,
+      "events": 1,
+      "tone": -1.3
+    },
+    {
+      "lat": 34.125,
+      "lon": 35.799,
+      "root": "19",
+      "place": "Jbeil, Mont-Liban, Lebanon",
+      "country": "LE",
+      "mentions": 10,
+      "events": 2,
+      "tone": -7.2
+    },
+    {
+      "lat": 59.333,
+      "lon": 18.05,
+      "root": "19",
+      "place": "Stockholm, Stockholm, Sweden",
+      "country": "SW",
+      "mentions": 10,
+      "events": 2,
+      "tone": -8.4
+    },
+    {
+      "lat": 9.867,
+      "lon": 77.7,
+      "root": "19",
+      "place": "Elumalai, Tamil Nadu, India",
+      "country": "IN",
+      "mentions": 10,
+      "events": 1,
+      "tone": -9.1
+    },
+    {
+      "lat": 33.415,
+      "lon": 112.422,
+      "root": "19",
+      "place": "Henan, Henan, China",
+      "country": "CH",
+      "mentions": 10,
+      "events": 1,
+      "tone": -7.2
+    },
+    {
+      "lat": 51.567,
+      "lon": -9.033,
+      "root": "19",
+      "place": "Rosscarbery, Cork, Ireland",
+      "country": "EI",
+      "mentions": 10,
+      "events": 1,
+      "tone": 10.7
+    },
+    {
+      "lat": 6.652,
+      "lon": 7.768,
+      "root": "19",
+      "place": "Ikem, Enugu, Nigeria",
+      "country": "NI",
+      "mentions": 10,
+      "events": 3,
+      "tone": -0.3
+    },
+    {
+      "lat": 53.719,
+      "lon": -6.348,
+      "root": "19",
+      "place": "Drogheda, Louth, Ireland",
+      "country": "EI",
+      "mentions": 10,
+      "events": 1,
+      "tone": -2.1
+    },
+    {
+      "lat": -8.096,
+      "lon": 111.22,
+      "root": "19",
+      "place": "Trenggono, Jawa Timur, Indonesia",
+      "country": "ID",
+      "mentions": 10,
+      "events": 2,
+      "tone": -4.5
+    }
+  ]
+}

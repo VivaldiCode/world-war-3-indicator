@@ -24,6 +24,13 @@ import { SAT_OWNERS, ownersPresent, type SatElements } from '@/lib/satellites';
 import { makeProjector, subPoint } from '@/lib/orbit';
 import { deployerColor, deployersPresent, type Deployment } from '@/lib/deployments';
 import { FLIGHT_CATS, flightCatsPresent, type Flight, type FlightCategory } from '@/lib/flights';
+import {
+  CONFLICT_CATS,
+  catForRoot,
+  conflictCatsPresent,
+  type ConflictEvent,
+  type ConflictCat,
+} from '@/lib/conflicts';
 
 const W = 960;
 const H = 500;
@@ -74,6 +81,30 @@ function deadReckon(f: Flight, dtSec: number): [number, number] {
   const lon = f.lon + (degLatPerSec * Math.sin(tr) * simDt) / cosLat;
   return [lon, lat];
 }
+
+// ── conflict-event markers ─────────────────────────────────────────────────────
+const CONFLICT_DIAMOND = 'M0,-1 L1,0 L0,1 L-1,0 Z'; // unit diamond, scaled per marker
+/** News-mention count → constant-on-screen diamond half-size (px). */
+function markerSize(mentions: number): number {
+  return Math.max(2.2, Math.min(5.5, 1.4 + Math.log10(Math.max(1, mentions)) * 1.4));
+}
+/** Darker (more negative) GDELT tone → a more opaque, "hotter" marker. */
+function toneOpacity(tone: number): number {
+  const neg = Math.max(2, Math.min(8, -tone)); // clamp to the meaningful band
+  return 0.6 + ((neg - 2) / 6) * 0.38; // 0.60 … 0.98
+}
+
+// ── view presets ──────────────────────────────────────────────────────────────
+// Five overlays at once overwhelms the map, so presets flip whole layer combos
+// in one click. The map loads on "Conflict" (calmest) and "All" is a click away.
+interface LayerState { cons: boolean; deps: boolean; sats: boolean; flights: boolean }
+const PRESETS: Array<{ id: string; label: string; state: LayerState }> = [
+  { id: 'conflict', label: 'Conflict', state: { cons: true, deps: false, sats: false, flights: false } },
+  { id: 'power', label: 'Power', state: { cons: false, deps: true, sats: false, flights: false } },
+  { id: 'live', label: 'Air/space', state: { cons: false, deps: false, sats: true, flights: true } },
+  { id: 'all', label: 'All', state: { cons: true, deps: true, sats: true, flights: true } },
+  { id: 'clear', label: 'Flags only', state: { cons: false, deps: false, sats: false, flights: false } },
+];
 
 function compact(n: number): string {
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(n >= 10_000_000 ? 0 : 1)}M`;
@@ -171,6 +202,7 @@ function clampT(t: T): T {
 }
 
 interface Hover { c: MapCountry; x: number; y: number }
+interface ConHover { ev: ConflictEvent; x: number; y: number }
 
 export function ForcesMap({
   mapData,
@@ -180,6 +212,9 @@ export function ForcesMap({
   satUpdatedAt,
   deployments,
   depUpdatedAt,
+  conflicts,
+  conUpdatedAt,
+  conWindowHours,
 }: {
   mapData: MapCountry[];
   updatedAt?: string;
@@ -188,12 +223,19 @@ export function ForcesMap({
   satUpdatedAt?: string;
   deployments?: Deployment[];
   depUpdatedAt?: string;
+  conflicts?: ConflictEvent[];
+  conUpdatedAt?: string;
+  conWindowHours?: number;
 }) {
   const [t, setT] = useState<T>(IDENTITY);
   const [hover, setHover] = useState<Hover | null>(null);
-  const [showSats, setShowSats] = useState(true);
-  const [showDeps, setShowDeps] = useState(true);
-  const [showFlights, setShowFlights] = useState(true);
+  const [conHover, setConHover] = useState<ConHover | null>(null);
+  // Default to the calmest useful view ("Conflict" preset); other layers are a
+  // preset/toggle click away.
+  const [showSats, setShowSats] = useState(false);
+  const [showDeps, setShowDeps] = useState(false);
+  const [showConflicts, setShowConflicts] = useState(true);
+  const [showFlights, setShowFlights] = useState(false);
   const [flights, setFlights] = useState<Flight[]>([]);
   const [flightsAt, setFlightsAt] = useState<string | null>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -253,6 +295,61 @@ export function ForcesMap({
   }, [deps, mapData]);
   const depsActive = showDeps && arcs.length > 0;
   const hoverName = hover?.c.name ?? null;
+
+  // Conflict incidents: GDELT flashpoints projected once to map space (static,
+  // so no rAF) and drawn inside the zoom group as constant-size diamonds.
+  const cons = useMemo(() => conflicts ?? [], [conflicts]);
+  const projConflicts = useMemo(() => {
+    if (!projector) return [];
+    const out: Array<{
+      key: string;
+      x: number;
+      y: number;
+      size: number;
+      opacity: number;
+      cat: ConflictCat;
+      ev: ConflictEvent;
+    }> = [];
+    for (let i = 0; i < cons.length; i++) {
+      const c = cons[i];
+      const xy = projector(c.lon, c.lat);
+      if (!xy) continue;
+      out.push({
+        key: `con-${i}`,
+        x: xy[0],
+        y: xy[1],
+        size: markerSize(c.mentions),
+        opacity: toneOpacity(c.tone),
+        cat: catForRoot(c.root),
+        ev: c,
+      });
+    }
+    return out;
+  }, [cons, projector]);
+  const conCats = useMemo(() => {
+    const count = new Map<ConflictCat, number>();
+    for (const c of cons) {
+      const cat = catForRoot(c.root);
+      count.set(cat, (count.get(cat) ?? 0) + 1);
+    }
+    return { order: conflictCatsPresent(cons), count };
+  }, [cons]);
+  const conflictsActive = showConflicts && projConflicts.length > 0;
+
+  const applyPreset = useCallback((s: LayerState) => {
+    setShowConflicts(s.cons);
+    setShowDeps(s.deps);
+    setShowSats(s.sats);
+    setShowFlights(s.flights);
+  }, []);
+  const activePreset =
+    PRESETS.find(
+      (p) =>
+        p.state.cons === showConflicts &&
+        p.state.deps === showDeps &&
+        p.state.sats === showSats &&
+        p.state.flights === showFlights,
+    )?.id ?? null;
 
   // Live military flights: polled from our /api/flights proxy and dead-reckoned
   // between polls. Like satellites they live in screen space, keyed by hex so
@@ -337,7 +434,8 @@ export function ForcesMap({
     const dx = ((e.clientX - d.px) / r.width) * W;
     const dy = ((e.clientY - d.py) / r.height) * H;
     drag.current = { active: true, px: e.clientX, py: e.clientY, moved: true };
-    setHover(null); // hide tooltip while panning
+    setHover(null); // hide tooltips while panning
+    setConHover(null);
     setT((prev) => clampT({ ...prev, x: prev.x + dx, y: prev.y + dy }));
   }, []);
   const endDrag = useCallback((e: RPointerEvent<SVGSVGElement>) => {
@@ -360,7 +458,19 @@ export function ForcesMap({
     const wrap = wrapRef.current;
     if (!wrap) return;
     const r = wrap.getBoundingClientRect();
+    setConHover(null); // country hover wins over a stale incident tooltip
     setHover({ c, x: clientX - r.left, y: clientY - r.top });
+  }, []);
+
+  // Incident tooltip: hovering a conflict marker shows its detail and suppresses
+  // the country tooltip underneath.
+  const moveConHover = useCallback((ev: ConflictEvent, clientX: number, clientY: number) => {
+    if (drag.current?.active) return;
+    const wrap = wrapRef.current;
+    if (!wrap) return;
+    const r = wrap.getBoundingClientRect();
+    setHover(null);
+    setConHover({ ev, x: clientX - r.left, y: clientY - r.top });
   }, []);
 
   // Animate the satellite layer: a time-warped clock drives the Keplerian
@@ -452,9 +562,51 @@ export function ForcesMap({
 
   return (
     <div className="relative parchment rounded-md p-4 sm:p-6">
-      <div className="flex items-center justify-between mb-3 gap-3 flex-wrap">
+      <div className="flex items-center justify-between mb-2 gap-3 flex-wrap">
         <h2 className="font-display text-xl sm:text-2xl tracking-[0.2em]">ORDER OF BATTLE</h2>
-        <div className="flex items-center gap-3 flex-wrap">
+        <span className="text-[0.65rem] uppercase tracking-[0.3em] text-ink/50 font-display">
+          hover a nation · scroll to zoom · drag to pan
+        </span>
+      </div>
+      <div className="flex items-center justify-between mb-3 gap-x-4 gap-y-2 flex-wrap">
+        <div className="flex items-center gap-1.5 flex-wrap">
+          <span className="text-[0.58rem] uppercase tracking-[0.2em] text-ink/45 font-display mr-0.5">views</span>
+          {PRESETS.map((p) => (
+            <button
+              key={p.id}
+              onClick={() => applyPreset(p.state)}
+              aria-pressed={activePreset === p.id}
+              className={`px-2 py-1 rounded border text-[0.58rem] uppercase tracking-[0.18em] font-display transition-colors ${
+                activePreset === p.id
+                  ? 'border-ink/60 bg-ink text-parchment'
+                  : 'border-ink/25 bg-parchment/50 text-ink/70 hover:bg-parchment'
+              }`}
+            >
+              {p.label}
+            </button>
+          ))}
+        </div>
+        <div className="flex items-center gap-2 flex-wrap">
+          {projConflicts.length > 0 && (
+            <button
+              onClick={() => setShowConflicts((v) => !v)}
+              aria-pressed={showConflicts}
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded border text-[0.6rem] uppercase tracking-[0.2em] font-display transition-colors ${
+                showConflicts
+                  ? 'border-ink/50 bg-ink text-parchment'
+                  : 'border-ink/30 bg-parchment/60 text-ink/70 hover:bg-parchment'
+              }`}
+            >
+              <span
+                className="inline-block w-2 h-2 rotate-45"
+                style={{
+                  backgroundColor: showConflicts ? '#c0392b' : 'transparent',
+                  boxShadow: showConflicts ? '0 0 0 1px #1c1208' : 'inset 0 0 0 1px #1c1208',
+                }}
+              />
+              conflicts
+            </button>
+          )}
           {arcs.length > 0 && (
             <button
               onClick={() => setShowDeps((v) => !v)}
@@ -515,9 +667,6 @@ export function ForcesMap({
               flights
             </button>
           )}
-          <span className="text-[0.65rem] uppercase tracking-[0.3em] text-ink/50 font-display">
-            hover a nation · scroll to zoom · drag to pan
-          </span>
         </div>
       </div>
 
@@ -532,7 +681,7 @@ export function ForcesMap({
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={endDrag}
-          onPointerLeave={(e) => { endDrag(e); setHover(null); }}
+          onPointerLeave={(e) => { endDrag(e); setHover(null); setConHover(null); }}
         >
           <defs>
             {mapData.map((c, i) =>
@@ -615,6 +764,39 @@ export function ForcesMap({
                 );
               })}
             </g>
+
+            {/* conflict incidents — recent GDELT flashpoints as constant-size
+                diamonds inside the zoom group (static; sized by news mentions,
+                coloured by the dominant CAMEO event root). The child scale
+                cancels the group's zoom so the glyph stays a fixed screen size. */}
+            {conflictsActive && (
+              <g style={{ pointerEvents: 'none' }}>
+                {projConflicts.map((c) => (
+                  <g
+                    key={c.key}
+                    transform={`translate(${c.x.toFixed(1)} ${c.y.toFixed(1)}) scale(${(c.size / t.k).toFixed(3)})`}
+                  >
+                    <path
+                      d={CONFLICT_DIAMOND}
+                      fill={CONFLICT_CATS[c.cat].color}
+                      stroke="#1c1208"
+                      strokeWidth={1}
+                      vectorEffect="non-scaling-stroke"
+                      opacity={c.opacity}
+                    />
+                    {/* invisible halo gives the tiny diamond a usable hover target */}
+                    <circle
+                      r={1.9}
+                      fill="transparent"
+                      style={{ pointerEvents: 'auto', cursor: 'help' }}
+                      onMouseEnter={(e) => moveConHover(c.ev, e.clientX, e.clientY)}
+                      onMouseMove={(e) => moveConHover(c.ev, e.clientX, e.clientY)}
+                      onMouseLeave={() => setConHover(null)}
+                    />
+                  </g>
+                ))}
+              </g>
+            )}
           </g>
 
           {/* satellite overlay — screen space (outside the zoom group); the
@@ -681,7 +863,8 @@ export function ForcesMap({
           <ZoomBtn onClick={() => setT(IDENTITY)} label="⟲" />
         </div>
 
-        {hover && <ForcesTooltip hover={hover} wrap={wrapRef.current} />}
+        {hover && !conHover && <ForcesTooltip hover={hover} wrap={wrapRef.current} />}
+        {conHover && <ConflictTooltip hover={conHover} wrap={wrapRef.current} />}
       </div>
 
       {satsActive && satOwners.length > 0 && (
@@ -706,7 +889,7 @@ export function ForcesMap({
           <span className="text-[0.62rem] uppercase tracking-[0.18em] font-display text-ink/45">
             forces abroad ·
           </span>
-          {depOwners.map((name) => (
+          {depOwners.slice(0, 8).map((name) => (
             <span
               key={name}
               className="flex items-center gap-1.5 text-[0.62rem] uppercase tracking-[0.18em] font-display text-ink/70"
@@ -718,6 +901,11 @@ export function ForcesMap({
               {shortName(name)}
             </span>
           ))}
+          {depOwners.length > 8 && (
+            <span className="text-[0.62rem] uppercase tracking-[0.18em] font-display text-ink/45">
+              +{depOwners.length - 8} more
+            </span>
+          )}
         </div>
       )}
 
@@ -741,15 +929,38 @@ export function ForcesMap({
         </div>
       )}
 
-      {(updatedAt || satUpdatedAt || depUpdatedAt || flightsAt) && (
+      {conflictsActive && conCats.order.length > 0 && (
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 mt-3">
+          <span className="text-[0.62rem] uppercase tracking-[0.18em] font-display text-ink/45">
+            flashpoints · {cons.length}
+            {conWindowHours ? ` · last ${conWindowHours}h` : ''} ·
+          </span>
+          {conCats.order.map((cat) => (
+            <span
+              key={cat}
+              className="flex items-center gap-1.5 text-[0.62rem] uppercase tracking-[0.18em] font-display text-ink/70"
+            >
+              <span
+                className="inline-block w-2 h-2 rotate-45"
+                style={{ backgroundColor: CONFLICT_CATS[cat].color, boxShadow: '0 0 0 1px #1c1208' }}
+              />
+              {CONFLICT_CATS[cat].label} · {conCats.count.get(cat) ?? 0}
+            </span>
+          ))}
+        </div>
+      )}
+
+      {(updatedAt || satUpdatedAt || depUpdatedAt || flightsAt || conUpdatedAt) && (
         <div className="mt-2 text-[0.6rem] uppercase tracking-[0.25em] text-ink/40 font-display">
           {updatedAt && <>force data · {new Date(updatedAt).toLocaleDateString()}</>}
-          {updatedAt && (satUpdatedAt || depUpdatedAt || flightsAt) && ' · '}
+          {updatedAt && (satUpdatedAt || depUpdatedAt || flightsAt || conUpdatedAt) && ' · '}
           {satUpdatedAt && <>orbits · {new Date(satUpdatedAt).toLocaleDateString()}</>}
-          {satUpdatedAt && (depUpdatedAt || flightsAt) && ' · '}
+          {satUpdatedAt && (depUpdatedAt || flightsAt || conUpdatedAt) && ' · '}
           {depUpdatedAt && <>deployments · {new Date(depUpdatedAt).toLocaleDateString()}</>}
-          {depUpdatedAt && flightsAt && ' · '}
+          {depUpdatedAt && (flightsAt || conUpdatedAt) && ' · '}
           {flightsAt && <>flights · live</>}
+          {flightsAt && conUpdatedAt && ' · '}
+          {conUpdatedAt && <>conflicts · {new Date(conUpdatedAt).toLocaleDateString()}</>}
         </div>
       )}
     </div>
@@ -803,6 +1014,37 @@ function ForcesTooltip({ hover, wrap }: { hover: Hover; wrap: HTMLDivElement | n
       ) : (
         <div className="text-[0.7rem] text-parchment/60 italic">No force data on file.</div>
       )}
+    </div>
+  );
+}
+
+function ConflictTooltip({ hover, wrap }: { hover: ConHover; wrap: HTMLDivElement | null }) {
+  const { ev, x, y } = hover;
+  const cat = catForRoot(ev.root);
+  const width = wrap?.clientWidth ?? 0;
+  const flipX = x > width - 230;
+  return (
+    <div
+      className="pointer-events-none absolute z-20 w-[210px] parchment-dark rounded-md border border-ink/30 shadow-lg p-2.5"
+      style={{
+        left: flipX ? undefined : x + 14,
+        right: flipX ? width - x + 14 : undefined,
+        top: Math.max(4, y - 10),
+      }}
+    >
+      <div className="flex items-center gap-2 mb-1.5">
+        <span
+          className="inline-block w-2.5 h-2.5 rotate-45"
+          style={{ backgroundColor: CONFLICT_CATS[cat].color, boxShadow: '0 0 0 1px #1c1208' }}
+        />
+        <span className="font-display text-xs tracking-[0.12em] text-parchment">{CONFLICT_CATS[cat].label}</span>
+      </div>
+      <div className="text-[0.74rem] text-parchment/90 leading-snug">{ev.place || 'Unknown location'}</div>
+      <div className="mt-1.5 flex flex-wrap gap-x-3 gap-y-0.5 text-[0.6rem] uppercase tracking-[0.12em] text-parchment/65 font-display">
+        <span>{compact(ev.mentions)} mentions</span>
+        <span>{ev.events} events</span>
+        <span>tone {ev.tone}</span>
+      </div>
     </div>
   );
 }

@@ -11,7 +11,8 @@
     "backfill": "tsx scripts/backfill.ts",
     "military": "tsx scripts/military.ts",
     "satellites": "tsx scripts/satellites.ts",
-    "deployments": "tsx scripts/deployments.ts"
+    "deployments": "tsx scripts/deployments.ts",
+    "conflicts": "tsx scripts/conflicts.ts"
   },
   "dependencies": {
     "better-sqlite3": "^11.5.0",
