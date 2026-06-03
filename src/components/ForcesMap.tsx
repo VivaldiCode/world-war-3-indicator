@@ -98,6 +98,7 @@ function toneOpacity(tone: number): number {
 // Five overlays at once overwhelms the map, so presets flip whole layer combos
 // in one click. The map loads on "Conflict" (calmest) and "All" is a click away.
 interface LayerState { cons: boolean; deps: boolean; sats: boolean; flights: boolean }
+const LAYERS_KEY = 'ww3-forces-layers'; // localStorage key for the remembered view
 const PRESETS: Array<{ id: string; label: string; state: LayerState }> = [
   { id: 'conflict', label: 'Conflict', state: { cons: true, deps: false, sats: false, flights: false } },
   { id: 'power', label: 'Power', state: { cons: false, deps: true, sats: false, flights: false } },
@@ -256,7 +257,35 @@ export function ForcesMap({
   // Client-only: keeps the dots out of the SSR HTML (no flash at the origin
   // before the animation loop runs).
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  // Restore the remembered layer view on mount (SSR renders the default, then
+  // this syncs once on the client).
+  useEffect(() => {
+    setMounted(true);
+    try {
+      const raw = localStorage.getItem(LAYERS_KEY);
+      if (raw) {
+        const s = JSON.parse(raw) as Partial<LayerState>;
+        if (typeof s.cons === 'boolean') setShowConflicts(s.cons);
+        if (typeof s.deps === 'boolean') setShowDeps(s.deps);
+        if (typeof s.sats === 'boolean') setShowSats(s.sats);
+        if (typeof s.flights === 'boolean') setShowFlights(s.flights);
+      }
+    } catch {
+      /* unreadable storage — keep defaults */
+    }
+  }, []);
+  // Remember the view whenever it changes (after the initial restore).
+  useEffect(() => {
+    if (!mounted) return;
+    try {
+      localStorage.setItem(
+        LAYERS_KEY,
+        JSON.stringify({ cons: showConflicts, deps: showDeps, sats: showSats, flights: showFlights }),
+      );
+    } catch {
+      /* ignore */
+    }
+  }, [mounted, showConflicts, showDeps, showSats, showFlights]);
   const satsActive = mounted && showSats && !!projector && sats.length > 0;
 
   // Deployment arcs: a bowed quadratic from the deploying country's centroid to
