@@ -2,7 +2,7 @@ node_modules
 .next
 out
 tsconfig.tsbuildinfo
-data/
+/data/
 .env
 .env.*
 !.env.example

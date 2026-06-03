@@ -1,9 +1,11 @@
 import { ThreatGauge } from '@/components/ThreatGauge';
-import { RiskMap } from '@/components/RiskMap';
+import { RiskMap, type MapCountry } from '@/components/RiskMap';
 import { SourceCard } from '@/components/SourceCard';
 import { RefreshButton } from '@/components/RefreshButton';
 import { getOrRefresh } from '@/lib/refresh';
 import { SOURCES } from '@/lib/registry';
+import { COUNTRIES, centroidByName } from '@/lib/worldmap';
+import { MILITARY, countryColor } from '@/lib/military';
 import type { SourceCategory } from '@/lib/types';
 
 export const dynamic = 'force-dynamic';
@@ -21,6 +23,17 @@ const CATEGORY_TITLE: Record<SourceCategory, string> = {
 export default async function Home() {
   const composite = await getOrRefresh();
   const totalWeight = SOURCES.reduce((s, x) => s + x.weight, 0);
+
+  // Build the map payload server-side: projection + colors + military join stay
+  // off the client bundle; only serializable strings/numbers cross the wire.
+  const mapData: MapCountry[] = COUNTRIES.map((c) => ({
+    id: c.id,
+    name: c.name,
+    d: c.d,
+    centroid: centroidByName(c.name) ?? null,
+    color: countryColor(c.name),
+    mil: MILITARY.countries[c.name] ?? null,
+  }));
 
   return (
     <main className="min-h-screen px-4 sm:px-8 py-10 max-w-7xl mx-auto">
@@ -55,7 +68,7 @@ export default async function Home() {
           </div>
         </div>
         <div className="lg:col-span-3">
-          <RiskMap composite={composite} />
+          <RiskMap composite={composite} mapData={mapData} updatedAt={MILITARY.updatedAt} />
         </div>
       </section>
 
