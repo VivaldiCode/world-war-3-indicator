@@ -44,6 +44,8 @@ services:
       - ELECTRICITYMAP_ZONE=${ELECTRICITYMAP_ZONE:-PT}
       - OPENWEATHER_API_KEY=${OPENWEATHER_API_KEY:-}
       - LIVEUAMAP_API_KEY=${LIVEUAMAP_API_KEY:-}
+      - WW3_MCP_TOKEN=${WW3_MCP_TOKEN:-}
+      - WW3_MCP_ALLOWED_ORIGINS=${WW3_MCP_ALLOWED_ORIGINS:-}
       # Headless scraping (Playwright) — install browsers first:
       - HEADLESS_ENABLED=${HEADLESS_ENABLED:-0}
     volumes:

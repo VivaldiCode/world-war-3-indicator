@@ -11,6 +11,8 @@
 # Optional env:
 #   WW3_IMAGE_NAME image name within the registry (default: ww3-indicator)
 #   WW3_PLATFORM   target platform for the build (default: linux/amd64)
+#   WW3_BASE_IMAGE, WW3_APT_MIRROR, WW3_NPM_REGISTRY
+#                  install only from local mirrors (see the Dockerfile)
 #
 # Notes:
 #   - If your registry serves HTTP (no TLS), declare it as an insecure
@@ -43,7 +45,11 @@ if [[ -n "${EXTRA_TAG}" ]]; then
 fi
 
 echo "==> Building ${REPO} for ${PLATFORM} (sha=${SHA})"
-docker build --platform="${PLATFORM}" -t "${REPO}:${SHA}" .
+BUILD_ARGS=()
+[[ -n "${WW3_BASE_IMAGE:-}" ]] && BUILD_ARGS+=(--build-arg "BASE_IMAGE=${WW3_BASE_IMAGE}")
+[[ -n "${WW3_APT_MIRROR:-}" ]] && BUILD_ARGS+=(--build-arg "APT_MIRROR=${WW3_APT_MIRROR}")
+[[ -n "${WW3_NPM_REGISTRY:-}" ]] && BUILD_ARGS+=(--build-arg "NPM_REGISTRY=${WW3_NPM_REGISTRY}")
+docker build --platform="${PLATFORM}" ${BUILD_ARGS[@]+"${BUILD_ARGS[@]}"} -t "${REPO}:${SHA}" .
 
 for t in "${TAGS[@]}"; do
   if [[ "$t" != "${SHA}" ]]; then

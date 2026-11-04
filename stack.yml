@@ -29,7 +29,7 @@ services:
     restart: unless-stopped
 
   ww3:
-    image: ww3-indicator:latest
+    image: ${WW3_REGISTRY:-}${WW3_REGISTRY:+/}ww3-indicator:${WW3_IMAGE_TAG:-latest}
     depends_on:
       postgres:
         condition: service_healthy
@@ -50,6 +50,10 @@ services:
       ELECTRICITYMAP_ZONE: ${ELECTRICITYMAP_ZONE:-PT}
       OPENWEATHER_API_KEY: ${OPENWEATHER_API_KEY:-}
       LIVEUAMAP_API_KEY: ${LIVEUAMAP_API_KEY:-}
+
+      # Without a token the MCP endpoint stays closed (503).
+      WW3_MCP_TOKEN: ${WW3_MCP_TOKEN:-}
+      WW3_MCP_ALLOWED_ORIGINS: ${WW3_MCP_ALLOWED_ORIGINS:-}
 
       HEADLESS_ENABLED: "0"
     volumes:

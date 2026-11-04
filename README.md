@@ -205,6 +205,9 @@ HTTP caching.
 | GET    | `/api/timeseries/{id}?from=&to=&limit=` | Full historical series for a source (Postgres) |
 | GET    | `/api/health`                     | Liveness + per-source freshness/error status |
 
+The full reference, including freshness and the MCP server, is in
+[`docs/API.md`](docs/API.md).
+
 ### Example
 
 ```bash
@@ -231,6 +234,8 @@ curl -s http://localhost:3000/api/index | jq '{score, band, computedAt}'
 | `ELECTRICITYMAP_TOKEN`         | ships w/ a default | Account-scoped; default is PT-only |
 | `ELECTRICITYMAP_ZONE`          | `PT`               | Which grid zone to monitor |
 | `OPENWEATHER_API_KEY`          | ships w/ a default | Free key from openweathermap.org (≤2h to activate) |
+| `WW3_MCP_TOKEN`                | unset              | Bearer token for `POST /mcp`; while unset the endpoint answers 503 |
+| `WW3_MCP_ALLOWED_ORIGINS`      | unset              | Browser origins allowed on `/mcp`, comma-separated |
 
 Any source whose credentials are missing — or whose upstream is rate-limiting
 — self-disables; the engine redistributes its weight across healthy sources.
@@ -329,6 +334,7 @@ file reads:
 | `ELECTRICITYMAP_TOKEN`    | yes\*    | enables grid signal |
 | `ELECTRICITYMAP_ZONE`     | no       | default `PT` |
 | `OPENWEATHER_API_KEY`     | yes\*    | enables conflict-weather |
+| `WW3_MCP_TOKEN`           | no       | enables the MCP server at `/mcp`; see [`docs/API.md`](docs/API.md) |
 | `LIVEUAMAP_API_KEY`       | yes\*    | enables Liveuamap live conflict events (endpoint URL also needs to be set in [`src/lib/sources/liveuamap.ts`](src/lib/sources/liveuamap.ts) — copy from `me.liveuamap.com/devapi`) |
 
 \* Optional — each missing credential simply parks that source in the
