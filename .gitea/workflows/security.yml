@@ -1,0 +1,68 @@
+# Pipeline de segurança do servidor (camada 2, fail-closed). Copiar para .gitea/workflows/security.yml do repo.
+# Corre no runner do homelab (label `homelab`, docker-04); o toolkit e os binários vêm do host (ver homelab/docker-04).
+# O envio para o DefectDojo e o estado do commit só correm se existir /etc/security-ci.env (identidade `security-ci`
+# montada nos jobs); nunca bloqueiam. O que bloqueia é o secscan.
+name: security
+on:
+  push:
+    branches: [main, master]   # nas branches só corre o evento de PR (evita runs duplicados e testes repetidos no DefectDojo)
+  pull_request:
+
+# só cancela os runs de segurança da mesma ref; nunca toca no CI do próprio repo
+concurrency:
+  group: security-${{ gitea.repository }}-${{ gitea.ref }}
+  cancel-in-progress: true
+
+jobs:
+  secscan:
+    runs-on: homelab
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09  # v5.1.0 (espelho local, por SHA)
+        with:
+          fetch-depth: 0
+      - name: Ferramentas (sha256 + Cosign; cache em /opt/sectk-home)
+        run: /opt/security-toolkit/install.sh --prefix /opt/sectk-home install
+      - name: secscan --full
+        id: scan
+        run: |
+          export SECURITY_TOOLKIT_HOME=/opt/sectk-home PATH="/opt/sectk-home/bin:$PATH"
+          set +e; secscan --full; rc=$?
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: SonarQube (qualidade; relatório por omissão, só bloqueia com SECSCAN_SONAR_GATE=block)
+        if: always()
+        run: |
+          [ -r /etc/security-ci.env ] || { echo "sem /etc/security-ci.env: SonarQube ignorado"; exit 0; }
+          set -a; . /etc/security-ci.env; set +a
+          export PATH="/opt/sectk-home/bin:$PATH" PROJECT="${GITHUB_REPOSITORY//\//_}"
+          wait=false; [ "${SECSCAN_SONAR_GATE:-report}" = block ] && wait=true
+          # o token (SONAR_TOKEN) vai no ambiente do scanner, nunca em argumentos
+          python3 /opt/security-toolkit/ci/with_secrets.py -- sh -c 'sonar-scanner -Dsonar.host.url=https://sonarqube.guilhermepinto.pt -Dsonar.projectKey="$PROJECT" -Dsonar.projectName="$GITHUB_REPOSITORY" -Dsonar.sources=. -Dsonar.exclusions="**/node_modules/**,.secscan/**,tests/planted/**" -Dsonar.qualitygate.wait='"$wait"'' || [ "$wait" = false ]
+      - name: SonarQube → DefectDojo (nunca bloqueia)
+        if: always()
+        run: |
+          [ -r /etc/security-ci.env ] || { echo "sem /etc/security-ci.env: envio do SonarQube ignorado"; exit 0; }
+          set -a; . /etc/security-ci.env; set +a
+          python3 /opt/security-toolkit/ci/with_secrets.py -- python3 /opt/security-toolkit/ci/sonar_to_dd.py || true
+      - name: SBOM para o Dependency-Track (nunca bloqueia)
+        if: always()
+        run: |
+          [ -r /etc/security-ci.env ] || { echo "sem /etc/security-ci.env: SBOM ignorado"; exit 0; }
+          set -a; . /etc/security-ci.env; set +a
+          python3 /opt/security-toolkit/ci/with_secrets.py -- python3 /opt/security-toolkit/ci/dt_upload.py || true
+      - name: DefectDojo e estado do commit (nunca bloqueia)
+        if: always()
+        env:
+          GITEA_TOKEN: ${{ gitea.token }}
+        run: |
+          url=""
+          if [ -r /etc/security-ci.env ]; then
+            set -a; . /etc/security-ci.env; set +a
+            url=$(python3 /opt/security-toolkit/ci/with_secrets.py -- python3 /opt/security-toolkit/ci/dd_import.py || true)
+          else
+            echo "sem /etc/security-ci.env: envio para o DefectDojo ignorado"
+          fi
+          state=success; [ "${{ steps.scan.outputs.rc }}" = 0 ] || state=failure
+          python3 /opt/security-toolkit/ci/gitea_status.py --state "$state" --url "$url" --desc "secscan: exit ${{ steps.scan.outputs.rc }}"
+      - name: Resultado (fail-closed)
+        run: '[ "${{ steps.scan.outputs.rc }}" = "0" ]'

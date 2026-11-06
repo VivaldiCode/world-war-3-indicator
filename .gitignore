@@ -13,3 +13,8 @@ tsconfig.tsbuildinfo
 .claude/
 
 .idea/
+
+# secscan (a baseline .secscan/baseline.json é versionada)
+.secscan/out/
+.secscan/state/
+.secscan/metrics.jsonl

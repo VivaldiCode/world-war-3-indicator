@@ -1,0 +1,22 @@
+# Copiar para .pre-commit-config.yaml (ficheiro protegido) e correr: pre-commit install --hook-type pre-commit --hook-type pre-push
+# Fail-open no local: o código 2 (erro ou timeout de um scanner) é só aviso, mas escreve sempre o aviso (verbose: true) e nunca passa
+# em silêncio se o secscan não estiver instalado (falha com instruções).
+repos:
+  - repo: local
+    hooks:
+      - id: secscan-staged
+        name: secscan (segredos nos ficheiros staged)
+        entry: sh -c 'command -v secscan >/dev/null || { echo "secscan nao esta instalado - correr ./install.sh do repo homelab/security-toolkit" >&2; exit 1; }; secscan --staged; c=$?; if [ "$c" -eq 2 ]; then echo "AVISO secscan - erro ou timeout de um scanner (fail-open local)" >&2; exit 0; fi; exit "$c"'
+        language: system
+        pass_filenames: false
+        always_run: true
+        verbose: true
+        stages: [pre-commit]
+      - id: secscan-diff
+        name: secscan (diff até 30 s)
+        entry: sh -c 'command -v secscan >/dev/null || { echo "secscan nao esta instalado - correr ./install.sh do repo homelab/security-toolkit" >&2; exit 1; }; secscan --diff; c=$?; if [ "$c" -eq 2 ]; then echo "AVISO secscan - erro ou timeout de um scanner (fail-open local)" >&2; exit 0; fi; exit "$c"'
+        language: system
+        pass_filenames: false
+        always_run: true
+        verbose: true
+        stages: [pre-push]
