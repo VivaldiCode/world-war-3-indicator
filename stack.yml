@@ -49,7 +49,19 @@ services:
       ELECTRICITYMAP_TOKEN: ${ELECTRICITYMAP_TOKEN:-}
       ELECTRICITYMAP_ZONE: ${ELECTRICITYMAP_ZONE:-PT}
       OPENWEATHER_API_KEY: ${OPENWEATHER_API_KEY:-}
-      LIVEUAMAP_API_KEY: ${LIVEUAMAP_API_KEY:-}
+
+      # Grok/X social source (HOMEL-470): only registered when XAI_API_KEY exists.
+      # Phase 0 = weight 0; raise WW3_GROK_WEIGHT only after the owner approves.
+      XAI_API_KEY: ${XAI_API_KEY:-}
+      WW3_GROK_WEIGHT: ${WW3_GROK_WEIGHT:-0}
+      WW3_GROK_INTERVAL_SEC: ${WW3_GROK_INTERVAL_SEC:-21600}
+      WW3_GROK_MAX_RUNS_PER_DAY: ${WW3_GROK_MAX_RUNS_PER_DAY:-6}
+      WW3_GROK_MODEL: ${WW3_GROK_MODEL:-grok-4.7}
+
+      # Battery reserve shadow mode (HOMEL-469): ntfy only, never writes to the battery.
+      NTFY_TOKEN: ${NTFY_TOKEN:-}
+      NTFY_URL: ${NTFY_URL:-https://ntfy.guilhermepinto.pt}
+      WW3_NTFY_TOPIC: ${WW3_NTFY_TOPIC:-homelab-ww3}
 
       # Without a token the MCP endpoint stays closed (503).
       WW3_MCP_TOKEN: ${WW3_MCP_TOKEN:-}

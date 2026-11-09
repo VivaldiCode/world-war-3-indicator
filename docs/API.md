@@ -36,6 +36,7 @@ service off the public internet. Only `/api/health` and `/api/flag/{code}` omit
 | GET      | `/api/timeseries/{id}?from=&to=&limit=` | Full series from Postgres; 503 without `DATABASE_URL` |
 | GET      | `/api/health`                           | Composite time and, per source, `ok`, `lastMeasuredAt`, `error` |
 | POST/GET | `/api/refresh?force=1`                  | Starts a crawl of the sources. **This one writes, and also answers GET** |
+| GET      | `/api/battery-reserve`                  | Battery reserve **recommendation** (shadow mode, read-only): `recommended`, `hold`, `reason`, `score`, `weightCoverage`, tiers. Never writes to the battery |
 | GET      | `/api/flights`                          | Live military flights for the forces map |
 | GET      | `/api/flag/{code}`                      | Country flag image |
 
