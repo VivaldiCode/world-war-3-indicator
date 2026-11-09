@@ -1,6 +1,6 @@
 import { SOURCES } from './registry';
-import { composeIndex, safeFetch } from './engine';
-import { latestComposite, latestReading, saveComposite, saveReading } from './storage';
+import { composeIndex, pickEffective, safeFetch } from './engine';
+import { latestComposite, latestReading, readingHistory, saveComposite, saveReading } from './storage';
 import {
   ensureSchema as ensureTsSchema,
   timeseriesEnabled,
@@ -29,16 +29,19 @@ export async function refreshAll(force = false): Promise<CompositeIndex> {
         });
       }
       const readings: Record<string, SourceReading> = {};
+      const schedulerSec = Number(process.env.WW3_REFRESH_INTERVAL_MS ?? 15 * 60 * 1000) / 1000;
+      const effective = (s: (typeof SOURCES)[number], r: SourceReading): SourceReading =>
+        r.ok ? r : pickEffective(r, readingHistory(s.id, 50), s.refreshIntervalSec, schedulerSec, now);
       const tasks = SOURCES.map(async (s) => {
         const latest = latestReading(s.id);
         const ageSec = latest ? (now - Date.parse(latest.measuredAt)) / 1000 : Infinity;
         if (!force && latest && ageSec < s.refreshIntervalSec) {
-          readings[s.id] = latest;
+          readings[s.id] = effective(s, latest);
           return;
         }
         const r = await safeFetch(s);
-        readings[s.id] = r;
         saveReading(r);
+        readings[s.id] = effective(s, r);
         if (tsOn && r.ok) {
           try {
             await tsInsertReading(r);
