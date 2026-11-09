@@ -44,6 +44,8 @@ export interface Quote {
   prevClose?: number;
   /** Close from ~22 trading days back (≈1 calendar month), if available. */
   monthAgoClose?: number;
+  /** Highest close over the fetched range. */
+  periodHigh?: number;
 }
 
 interface YahooChartResponse {
@@ -138,5 +140,6 @@ export async function fetchYahoo(symbol: string, range = '2mo'): Promise<Quote> 
     close,
     prevClose: prev?.c ?? result.meta.chartPreviousClose,
     monthAgoClose: monthAgo?.c,
+    periodHigh: Math.max(...cleaned.map((p) => p.c)),
   };
 }

@@ -48,6 +48,12 @@ export interface DataSource {
   unit?: string;
   /** Plain-language explanation of how the score is derived. */
   scoringExplanation: string;
+  /**
+   * Optional switch evaluated once at boot. A source that returns false is not
+   * registered at all (no fetch, no «failed source» noise): used for sources
+   * that need a key which may not exist yet.
+   */
+  enabled?: () => boolean;
   fetch(): Promise<SourceReading>;
   /**
    * Optional one-shot historical backfill. When implemented, returns the

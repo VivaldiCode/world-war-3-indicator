@@ -14,11 +14,14 @@ import { globalFirepowerSource } from './sources/globalfirepower';
 import { globalPeaceIndexSource } from './sources/gpi';
 import { sipriMilitarySpendSource } from './sources/sipri';
 import { n2yoSatellitesSource } from './sources/n2yo';
-import { electricityMapsSource } from './sources/electricitymap';
 import { openWeatherSource } from './sources/openweather';
 import { cloudflareRadarSource } from './sources/cloudflare_radar';
 import { ucdpBattleDeathsSource } from './sources/ucdp_battle_deaths';
-import { liveuamapSource } from './sources/liveuamap';
+import { ovxSource } from './sources/ovx';
+import { taiexSource } from './sources/taiex';
+import { portwatchSource } from './sources/portwatch';
+import { polymarketSource } from './sources/polymarket';
+import { grokXSocialSource } from './sources/grok_x_social';
 
 /**
  * The single source of truth for which plugins are active and how heavy they
@@ -28,7 +31,7 @@ import { liveuamapSource } from './sources/liveuamap';
  * Weights are *relative* — the engine renormalizes them at composition time,
  * so feel free to add new sources without re-tuning every entry.
  */
-export const SOURCES: DataSource[] = [
+const ALL_SOURCES: DataSource[] = [
   // Markets — fear / safe-haven / risk-off signals
   goldSource,           // weight 9 — classic safe-haven
   oilSource,            // weight 9 — geopolitical premium
@@ -42,16 +45,19 @@ export const SOURCES: DataSource[] = [
   // Conflicts — boots-on-the-ground reality
   acledConflictsSource,    // weight 10 — political violence events
   ucdpConflictsSource,     // weight 9 — active state-based conflicts
-  liveuamapSource,         // weight 8 — live geo-tagged conflict events
   ucdpBattleDeathsSource,  // weight 4 — historical battle-deaths baseline
 
   // Sentiment — narrative pressure
   gdeltToneSource,      // weight 7 — global news tone
   cloudflareRadarSource,// weight 6 — internet attack traffic + outages
   openWeatherSource,    // weight 3 — attack-favourable weather over conflict zones
+  portwatchSource,      // weight 5 — maritime chokepoint traffic (HOMEL-474)
+  polymarketSource,     // weight 6 — crowd odds on conflict markets (HOMEL-474)
+  grokXSocialSource,    // weight 0 in phase 0 (WW3_GROK_WEIGHT); only registered with XAI_API_KEY (HOMEL-470)
 
   // Markets (additional)
-  electricityMapsSource,// weight 3 — European grid fossil reliance
+  ovxSource,            // weight 4 — oil-volatility index (HOMEL-468)
+  taiexSource,          // weight 4 — Taiwan equity stress (HOMEL-468)
 
   // Military / structural
   globalFirepowerSource,    // weight 6 — top-15 power index
@@ -59,6 +65,10 @@ export const SOURCES: DataSource[] = [
   sipriMilitarySpendSource, // weight 5 — global mil spend trend
   n2yoSatellitesSource,     // weight 4 — military sats overhead capitals
 ];
+
+// Retired (HOMEL-468): electricitymap.ts (token without access to any zone; swap
+// for a gas-price source once a keyless one exists) and liveuamap (paid API, no key).
+export const SOURCES: DataSource[] = ALL_SOURCES.filter((s) => s.enabled?.() ?? true);
 
 export function getSource(id: string): DataSource | undefined {
   return SOURCES.find((s) => s.id === id);

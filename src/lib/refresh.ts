@@ -7,6 +7,7 @@ import {
   tsInsertComposite,
   tsInsertReading,
 } from './timeseries';
+import { runBatteryShadow } from './battery_runner';
 import type { CompositeIndex, SourceReading } from './types';
 
 let inFlight: Promise<CompositeIndex> | null = null;
@@ -61,6 +62,7 @@ export async function refreshAll(force = false): Promise<CompositeIndex> {
         }
       }
       lastRefreshAt = now;
+      await runBatteryShadow(composite);
       return composite;
     } finally {
       inFlight = null;
