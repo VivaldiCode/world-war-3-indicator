@@ -19,6 +19,7 @@ import { cloudflareRadarSource } from './sources/cloudflare_radar';
 import { ucdpBattleDeathsSource } from './sources/ucdp_battle_deaths';
 import { ovxSource } from './sources/ovx';
 import { taiexSource } from './sources/taiex';
+import { ucdpGedSource } from './sources/ucdp_ged';
 import { portwatchSource } from './sources/portwatch';
 import { polymarketSource } from './sources/polymarket';
 import { grokXSocialSource } from './sources/grok_x_social';
@@ -46,6 +47,7 @@ const ALL_SOURCES: DataSource[] = [
   acledConflictsSource,    // weight 10 — political violence events
   ucdpConflictsSource,     // weight 9 — active state-based conflicts
   ucdpBattleDeathsSource,  // weight 4 — historical battle-deaths baseline
+  ucdpGedSource,           // weight 8 — UCDP GED candidate events; only with UCDP_API_TOKEN (HOMEL-475)
 
   // Sentiment — narrative pressure
   gdeltToneSource,      // weight 7 — global news tone
