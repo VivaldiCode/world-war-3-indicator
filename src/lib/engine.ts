@@ -91,6 +91,24 @@ export function pickEffective(
   };
 }
 
+/**
+ * A source whose latest reading FAILED is retried on the next scheduler tick instead of waiting
+ * out its whole refresh interval (a 429 at minute 1 must not mean an hour of silence).
+ */
+export function refreshDue(
+  latest: SourceReading | null,
+  refreshIntervalSec: number,
+  schedulerIntervalSec: number,
+  nowMs: number,
+): boolean {
+  if (!latest) return true;
+  const ageSec = (nowMs - Date.parse(latest.measuredAt)) / 1000;
+  if (!Number.isFinite(ageSec)) return true;
+  const waitSec = latest.ok ? refreshIntervalSec : Math.min(refreshIntervalSec, schedulerIntervalSec);
+  // one tick of tolerance: refreshes land a few seconds earlier than the exact interval
+  return ageSec >= waitSec - 60;
+}
+
 export async function safeFetch(source: DataSource): Promise<SourceReading> {
   try {
     const r = await source.fetch();
