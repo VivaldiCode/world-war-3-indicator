@@ -161,13 +161,23 @@ export function extractOutputText(resp: ResponsesApiOutput): string {
   return parts.join('\n');
 }
 
+/**
+ * Where the Responses API lives. Default is xAI directly; with the AI Orchestrator
+ * set WW3_GROK_BASE_URL=https://ai-orchestrator.guilhermepinto.pt/v1 and put the
+ * ORCHESTRATOR key in XAI_API_KEY (the orchestrator holds the real xAI credential,
+ * routes the model alias and records cost). HOMEL-476.
+ */
+export function grokBaseUrl(): string {
+  return (process.env.WW3_GROK_BASE_URL ?? 'https://api.x.ai/v1').replace(/\/+$/, '');
+}
+
 export async function callGrok(doFetch: typeof fetch = fetch): Promise<{ text: string; usage?: Record<string, unknown> }> {
   const key = process.env.XAI_API_KEY;
   if (!key) throw new Error('XAI_API_KEY not set');
   const today = new Date();
   const from = new Date(today.getTime() - 24 * 3600 * 1000);
   const day = (d: Date) => d.toISOString().slice(0, 10);
-  const res = await doFetch('https://api.x.ai/v1/responses', {
+  const res = await doFetch(`${grokBaseUrl()}/responses`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
     body: JSON.stringify({
@@ -182,7 +192,7 @@ export async function callGrok(doFetch: typeof fetch = fetch): Promise<{ text: s
   });
   if (!res.ok) {
     // never echo the body verbatim: it may contain account details. Status + short reason only.
-    const reason = res.status === 402 || res.status === 429 ? 'billing/credits or rate limit' : res.statusText;
+    const reason = res.status === 402 || res.status === 429 ? 'billing/credits or rate limit' : res.status === 401 || res.status === 403 ? 'key refused' : res.statusText;
     throw new Error(`xAI HTTP ${res.status} (${reason})`);
   }
   const json = (await res.json()) as ResponsesApiOutput;

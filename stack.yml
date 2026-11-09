@@ -60,6 +60,9 @@ services:
       WW3_GROK_INTERVAL_SEC: ${WW3_GROK_INTERVAL_SEC:-21600}
       WW3_GROK_MAX_RUNS_PER_DAY: ${WW3_GROK_MAX_RUNS_PER_DAY:-6}
       WW3_GROK_MODEL: ${WW3_GROK_MODEL:-grok-4.7}
+      # Via the AI Orchestrator: WW3_GROK_BASE_URL=https://ai-orchestrator.guilhermepinto.pt/v1, WW3_GROK_MODEL=<alias>,
+      # and XAI_API_KEY holds the orchestrator API key. Empty/unset = xAI directly.
+      WW3_GROK_BASE_URL: ${WW3_GROK_BASE_URL:-https://api.x.ai/v1}
 
       # Battery reserve shadow mode (HOMEL-469): ntfy only, never writes to the battery.
       NTFY_TOKEN: ${NTFY_TOKEN:-}

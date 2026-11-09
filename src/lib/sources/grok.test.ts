@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
-import { callGrok, extractOutputText, GROK_TOPICS, parseGrokTopics, scoreGrokTopics, smoothGrok, topicConfidence, type GrokTopicReading } from './grok_x_social';
+import { callGrok, extractOutputText, grokBaseUrl, GROK_TOPICS, parseGrokTopics, scoreGrokTopics, smoothGrok, topicConfidence, type GrokTopicReading } from './grok_x_social';
 import { taiexScore } from './taiex';
 
 const topic = (id: string, intensity: number, accounts = 5, confirmed = false): GrokTopicReading => ({ id, intensity, credibleAccounts: accounts, confirmedOutsideX: confirmed, posts: [] });
@@ -76,6 +76,30 @@ describe('callGrok', () => {
   it('reads output_text from the Responses API shape', () => {
     assert.equal(extractOutputText({ output: [{ type: 'tool_call' }, { type: 'message', content: [{ type: 'output_text', text: '{"a":1}' }] }] }), '{"a":1}');
     assert.throws(() => extractOutputText({ output: [] }), /no text/);
+  });
+});
+
+describe('grok base URL (orchestrator routing)', () => {
+  it('defaults to xAI and honours WW3_GROK_BASE_URL, with or without a trailing slash', () => {
+    delete process.env.WW3_GROK_BASE_URL;
+    assert.equal(grokBaseUrl(), 'https://api.x.ai/v1');
+    process.env.WW3_GROK_BASE_URL = 'https://ai-orchestrator.example/v1/';
+    assert.equal(grokBaseUrl(), 'https://ai-orchestrator.example/v1');
+    delete process.env.WW3_GROK_BASE_URL;
+  });
+  it('calls <base>/responses with the model alias and the key', async () => {
+    process.env.XAI_API_KEY = 'orch-key';
+    process.env.WW3_GROK_BASE_URL = 'https://ai-orchestrator.example/v1';
+    process.env.WW3_GROK_MODEL = 'grok-x';
+    let seen: { url: string; auth: string; model: string; tools: string[] } | null = null;
+    const doFetch = (async (u: string, init: RequestInit) => {
+      const body = JSON.parse(String(init.body));
+      seen = { url: u, auth: (init.headers as Record<string, string>).Authorization, model: body.model, tools: body.tools.map((t: { type: string }) => t.type) };
+      return new Response(JSON.stringify({ output: [{ type: 'message', content: [{ type: 'output_text', text: '{}' }] }] }), { status: 200 });
+    }) as unknown as typeof fetch;
+    await callGrok(doFetch);
+    assert.deepEqual(seen, { url: 'https://ai-orchestrator.example/v1/responses', auth: 'Bearer orch-key', model: 'grok-x', tools: ['x_search', 'web_search'] });
+    delete process.env.XAI_API_KEY; delete process.env.WW3_GROK_BASE_URL; delete process.env.WW3_GROK_MODEL;
   });
 });
 
