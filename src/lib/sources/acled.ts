@@ -61,11 +61,10 @@ async function getAcledToken(username: string, password: string): Promise<string
  *   1. POST username/password to /oauth/token → 24h Bearer.
  *   2. GET /api/acled/read with `Authorization: Bearer …`.
  *
- * Heads-up: after registering at acleddata.com/register, a newly created
- * account authenticates fine but data endpoints respond `403 Access denied`
- * until ACLED's team grants the data-read scope (usually 1–2 business days
- * — they email you when it's done). The source returns a friendly "Awaiting
- * ACLED registration" card until that scope arrives.
+ * Heads-up: a myACLED account authenticates fine at any level, but /api/acled/read
+ * (event data) answers `403 Access denied` for accounts on the Open level, which
+ * only has aggregated data. Research or higher is needed; ACLED's Access Team
+ * assigns the level (HOMEL-475).
  */
 export const acledConflictsSource: DataSource = {
   id: 'acled-events',
@@ -102,10 +101,11 @@ export const acledConflictsSource: DataSource = {
       cache: 'no-store',
     });
     if (res.status === 403) {
-      // Most common cause is the data-read scope not yet granted to the
-      // newly-registered account. Surface it as a user-friendly state.
+      // Login works (we hold a token) but the event endpoint refuses: the myACLED access level
+      // has no event-level data. Open (the default for new organisations and generic emails)
+      // is aggregated data only; /api/acled/read needs Research or higher. HOMEL-475.
       throw new Error(
-        'ACLED account awaiting approval — data-read scope not yet granted (typically 1-2 business days after registration).',
+        'ACLED access denied: the account logs in but its myACLED level has no event-level data (Open = aggregated only; the API needs Research or higher). Ask the ACLED Access Team to upgrade the level.',
       );
     }
     if (!res.ok) {

@@ -26,10 +26,10 @@ const PATTERNS: Array<{
     }),
   },
   {
-    match: (s) => /ACLED account awaiting approval/i.test(s),
+    match: (s) => /ACLED account awaiting approval|ACLED access denied/i.test(s),
     build: () => ({
-      message: 'ACLED account awaiting approval',
-      hint: 'Credentials accepted — ACLED grants data-read scope 1–2 business days after sign-up.',
+      message: 'ACLED level has no event data',
+      hint: 'Login works, but the myACLED level (Open = aggregated only) cannot read event data. Ask the ACLED Access Team for Research level or higher.',
       status: 'activating',
     }),
   },
