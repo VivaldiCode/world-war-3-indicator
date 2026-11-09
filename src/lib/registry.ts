@@ -19,6 +19,8 @@ import { cloudflareRadarSource } from './sources/cloudflare_radar';
 import { ucdpBattleDeathsSource } from './sources/ucdp_battle_deaths';
 import { ovxSource } from './sources/ovx';
 import { taiexSource } from './sources/taiex';
+import { portwatchSource } from './sources/portwatch';
+import { polymarketSource } from './sources/polymarket';
 import { grokXSocialSource } from './sources/grok_x_social';
 
 /**
@@ -49,6 +51,8 @@ const ALL_SOURCES: DataSource[] = [
   gdeltToneSource,      // weight 7 — global news tone
   cloudflareRadarSource,// weight 6 — internet attack traffic + outages
   openWeatherSource,    // weight 3 — attack-favourable weather over conflict zones
+  portwatchSource,      // weight 5 — maritime chokepoint traffic (HOMEL-474)
+  polymarketSource,     // weight 6 — crowd odds on conflict markets (HOMEL-474)
   grokXSocialSource,    // weight 0 in phase 0 (WW3_GROK_WEIGHT); only registered with XAI_API_KEY (HOMEL-470)
 
   // Markets (additional)
