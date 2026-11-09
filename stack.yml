@@ -50,6 +50,9 @@ services:
       ELECTRICITYMAP_ZONE: ${ELECTRICITYMAP_ZONE:-PT}
       OPENWEATHER_API_KEY: ${OPENWEATHER_API_KEY:-}
 
+      # UCDP GED candidate events (HOMEL-475): only registered when the token exists.
+      UCDP_API_TOKEN: ${UCDP_API_TOKEN:-}
+
       # Grok/X social source (HOMEL-470): only registered when XAI_API_KEY exists.
       # Phase 0 = weight 0; raise WW3_GROK_WEIGHT only after the owner approves.
       XAI_API_KEY: ${XAI_API_KEY:-}
