@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
-import { pickEffective } from './engine';
+import { pickEffective, refreshDue } from './engine';
 import { fetchWithBackoff } from './sources/gdelt';
 import type { SourceReading } from './types';
 
@@ -89,4 +89,16 @@ describe('gdelt fetchWithBackoff', () => {
     );
     assert.equal(n, 1);
   });
+});
+
+describe('refreshDue', () => {
+  it('waits the full interval after a good reading', () => {
+    assert.equal(refreshDue(reading(30 * 60 * 1000, true), 3600, 900, NOW), false);
+    assert.equal(refreshDue(reading(61 * 60 * 1000, true), 3600, 900, NOW), true);
+  });
+  it('retries a failed reading on the next scheduler tick', () => {
+    assert.equal(refreshDue(reading(5 * 60 * 1000, false), 3600, 900, NOW), false);
+    assert.equal(refreshDue(reading(15 * 60 * 1000, false), 3600, 900, NOW), true);
+  });
+  it('is due when there is no reading', () => assert.equal(refreshDue(null, 3600, 900, NOW), true));
 });

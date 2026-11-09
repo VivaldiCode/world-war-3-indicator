@@ -1,5 +1,5 @@
 import { SOURCES } from './registry';
-import { composeIndex, pickEffective, safeFetch } from './engine';
+import { composeIndex, pickEffective, refreshDue, safeFetch } from './engine';
 import { latestComposite, latestReading, readingHistory, saveComposite, saveReading } from './storage';
 import {
   ensureSchema as ensureTsSchema,
@@ -35,8 +35,7 @@ export async function refreshAll(force = false): Promise<CompositeIndex> {
         r.ok ? r : pickEffective(r, readingHistory(s.id, 50), s.refreshIntervalSec, schedulerSec, now);
       const tasks = SOURCES.map(async (s) => {
         const latest = latestReading(s.id);
-        const ageSec = latest ? (now - Date.parse(latest.measuredAt)) / 1000 : Infinity;
-        if (!force && latest && ageSec < s.refreshIntervalSec) {
+        if (!force && latest && !refreshDue(latest, s.refreshIntervalSec, schedulerSec, now)) {
           readings[s.id] = effective(s, latest);
           return;
         }
